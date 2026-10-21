@@ -17,7 +17,7 @@ The file describes Shift 9, the email-focused version. Shift 9 shut down on 2026
 - When another app opens a `mailto:` link, Shift asks which account to use and opens a new message in that account.
 - Keyboard shortcuts move to the previous or next account, open a quick account switcher, and switch between the Google apps of an account.
 - You sign in to Google inside Shift, on Google's own sign-in page.
-- Shift has its own server. It syncs the account list and settings between computers, sends usage data to analytics services, and limits the free plan to two accounts.
+- Shift has its own server. It syncs the account list and the configuration between computers, sends usage data to analytics services, and limits the free plan to two accounts.
 - Shift has a search across accounts and a combined calendar, both through Google APIs. It has no combined inbox.
 - Shift has a general web browser and a store of other web apps.
 
