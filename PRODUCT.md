@@ -1,6 +1,6 @@
 # Shifted: product description
 
-This file tells the build agent what Shifted does. Every prompt in `prompts/` points to it.
+This file tells the build agent what Shifted does. Every prompt in `prompts/` points to it. The words in this file have the meanings in `GLOSSARY.md`.
 
 ## Name
 

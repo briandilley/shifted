@@ -9,6 +9,7 @@ Status: in design. The prompts are not complete. Do not use them yet.
 ## What is in this repo
 
 - `PRODUCT.md`: what the app does and what it does not do.
+- `GLOSSARY.md`: the words that the documents use, with one meaning for each word.
 - `docs/adr/`: the decisions, with the reason for each one.
 - `prompts/`: the build prompts, one prompt for each phase, in number order.
 - `docs/agents/`: the configuration for the agent skills that we use to write these documents.
