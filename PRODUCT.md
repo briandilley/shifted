@@ -26,21 +26,7 @@ Shifted runs on macOS, Windows, and Linux. All three platforms get the same feat
 
 Shifted is an Electron app written in TypeScript. See `docs/adr/0003-electron-and-typescript.md`.
 
-The build tools are:
-
-- npm, for packages and scripts.
-- electron-vite, for the development server and the build of the main process, the preload scripts, and the renderer.
-- React with TypeScript, for the screens of Shifted: the sidebar, the tab bar, the account picker, the top line of the sign-in window, and the configuration. Styles are plain CSS modules, with no component kit. Google's pages are not part of this.
-- electron-builder, for installers on all three platforms. Its electron-updater part gives auto-update on macOS, Windows, and Linux (AppImage). The other choice, Electron Forge, has no auto-update for Linux.
-
-## Version 1 features
-
-Version 1 has these features, in addition to the sidebar, the tab bar, and adding and removing accounts. Each feature has its own section below when its details are decided.
-
-- Unread badges: an unread count on each account in the sidebar, and the total on the app icon.
-- Notifications: desktop notifications for new mail and for Calendar reminders, in every account.
-- `mailto:` handler: Shifted can be the default email app of the computer.
-- Keyboard shortcuts: jump to an account, move to the previous or next account, and switch between the Gmail and Calendar tabs.
+The build tools and the test approach are in `BUILD.md`.
 
 ## Window and sidebar
 
