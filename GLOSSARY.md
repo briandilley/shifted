@@ -60,6 +60,14 @@ _Avoid_: login window, auth popup, sign-in dialog
 The small Shifted window that asks which account to use for a `mailto:` link from another app.
 _Avoid_: chooser, selector, mailbox dialog
 
+**Configuration**:
+The values that a person can change in Shifted, for example quiet hours or the color of an account.
+_Avoid_: settings, preferences, options
+
+**Configuration window**:
+The Shifted window where you change the configuration. Its title on screen is "Settings", to match the operating systems.
+_Avoid_: settings window, preferences window
+
 **Default browser**:
 The web browser that the operating system opens for web links, for example Chrome, Safari, Edge, or Firefox.
 _Avoid_: external browser, system browser

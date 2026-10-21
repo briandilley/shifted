@@ -229,6 +229,45 @@ Rule 5 has a known cost. Example: you click a Google Docs link in account B. The
 - All data of Shifted stays on the computer: the account list, the preferences, and the sessions.
 - The only network traffic is the traffic of Google's own pages, the pages of a company identity provider during sign-in, and the update check if the build has one.
 
+## Configuration
+
+The configuration window has the title "Settings". Cmd+, opens it. The context menu of an account opens the page of that account.
+
+```
+Settings
++--------------+------------------------+
+| General      | Open at login     [ ]  |
+| Notifications| Background loading [v] |
+| ------------ | Downloads ...          |
+| [A] alice    | Default email app [..] |
+| [B] work     |                        |
++--------------+------------------------+
+```
+
+General page:
+
+- Open at login (off by default).
+- Background loading: Everything, Calendars only, or Selected account only.
+- Ask where to save each file (off by default).
+- Make Shifted the default email app.
+- Clear the "Always use this account" choice of the account picker.
+
+Notifications page:
+
+- Snooze state, with a button to stop the snooze.
+- A short note that tells you to keep Gmail's own new-mail notifications off.
+
+One page for each account:
+
+- Nickname and color.
+- Unread count source: Automatic, Primary, Whole inbox, or Important.
+- Notification switches: new mail, Calendar reminders, and Chat messages.
+- Quiet hours: on or off, a time range, and weekdays.
+- Reset the remembered page permissions.
+- Sign out, and Remove.
+
+Shifted saves the configuration in one JSON file in its app data folder. The sessions and the saved profile photos are in the same folder.
+
 ## What Shifted is not
 
 - Shifted is not a web browser. It has no address bar and no browser tabs, and you cannot use it to visit websites in general.
