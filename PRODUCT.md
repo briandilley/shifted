@@ -197,4 +197,3 @@ Rule 5 has a known cost. Example: you click a Google Docs link in account B. The
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
 - The UI library for the sidebar.
-- How the app gets the unread count for each account.
