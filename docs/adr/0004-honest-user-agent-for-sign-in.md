@@ -9,7 +9,10 @@ Google blocks sign-in from browsers that use the user agent of another browser, 
 
 ## Consequences
 
-- Passkeys do not work. Electron shows no passkey dialog, so the passkey step waits forever or fails. You must click "Try another way" and use a password and 2-Step Verification, for example the prompt on your phone. Shifted tells you this on the sign-in screen.
+- Passkeys do not work on macOS and Linux. Electron 45 has no passkey dialog of its own, so the passkey step waits forever or fails. You must click "Try another way" and use a password and 2-Step Verification, for example the prompt on your phone. Shifted tells you this in the sign-in window.
+- On macOS, Apple lets an app use the passkeys of the user (iCloud Keychain or a phone) on any website only if the app has a browser entitlement. Apple grants that entitlement after a review against browser criteria, and a Gmail wrapper is unlikely to qualify.
+- On Windows, Chromium gives passkey requests to Windows Hello, which shows its own dialog. This works in Electron in general, but we did not test it with Google.
+- Electron 45 adds `app.configureWebAuthn({ touchID })` on macOS. It supports a Touch ID passkey that only Shifted on that Mac can use. An optional later prompt can add this after a prototype shows that Google lets an account create such a passkey.
 - An account that can only sign in with a passkey or a hardware security key (for example Google Advanced Protection) was not tested. Expect it to fail.
 - A Workspace account that signs in through a company identity provider (Okta, Microsoft Entra ID) was not tested.
 - Google can change its rules at any time. Each prompt that touches sign-in has a hand check that signs in to a new account.

@@ -193,7 +193,9 @@ Example: you add `name@company.com`. Google sends you to `company.okta.com` to s
 - When Gmail loads in the sign-in window, Shifted closes the sign-in window and shows Gmail of that account in the main window.
 - If Google signs an account out, the content area of that account says that the account is signed out and shows a "Sign in again" button. The button opens the sign-in window for that account. Shifted never shows Google's sign-in page in the content area.
 - Shifted never pretends to be another browser. See `docs/adr/0004-honest-user-agent-for-sign-in.md`.
-- Passkeys do not work in Shifted. When Google asks for a passkey, you click "Try another way" and use your password and 2-Step Verification. The sign-in screen of Shifted tells you this before you start.
+- On macOS and Linux, passkeys do not work in Shifted. When Google asks for a passkey, you click "Try another way" and use your password and 2-Step Verification. The top line of the sign-in window tells you this.
+- On Windows, Google's passkey request goes to Windows Hello, which shows its own dialog.
+- An optional later prompt adds Touch ID passkeys on macOS. See `docs/adr/0004-honest-user-agent-for-sign-in.md`.
 
 ## Distribution
 
