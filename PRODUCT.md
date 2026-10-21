@@ -265,6 +265,13 @@ Shifted saves the configuration in one JSON file in its app data folder. The ses
 
 You can move the configuration of Shifted to another computer. The exported configuration never has sign-ins: no cookies, no passwords, and no session data. On the new computer, you sign in to each account again.
 
+The exported configuration has these values:
+
+- For each account: the address, the nickname, the color, the place in the sidebar, the unread count source, the notification switches, and the quiet hours.
+- From the General page: background loading, "Ask where to save each file", and the "Always use this account" choice of the account picker.
+
+It leaves out the values that belong to one computer: open at login, the default email app, and the size and position of the window. It also leaves out the remembered answers for page permissions, the snooze, and the profile photos. Shifted gets each photo again after sign-in.
+
 The General page of the configuration window has three buttons:
 
 - `Export configuration…` saves the exported configuration as a file. You pick the folder. The file name is `Shifted configuration <date>.json`.

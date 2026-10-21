@@ -31,7 +31,9 @@ At the end of this phase, you can export the configuration to a file, or to an e
 
 3. Put in it only the values that "Move to another computer" in `PRODUCT.md` lists. Write the list of allowed keys once, in this module. Never copy a key that is not on the list.
 4. Do not export the `id` of an account. The import makes new IDs.
-5. The text form is for email. It is the file form, compressed with `zlib.deflateRawSync` and encoded as base64, between two marker lines:
+5. Write the accounts in the order of the sidebar.
+6. The "Always use this account" choice points to an account by its ID. Export it as the address of that account. On import, turn the address back into the new ID.
+7. The text form is for email. It is the file form, compressed with `zlib.deflateRawSync` and encoded as base64, between two marker lines:
 
    ```text
    -----BEGIN SHIFTED CONFIGURATION-----
@@ -40,7 +42,7 @@ At the end of this phase, you can export the configuration to a file, or to an e
    ```
 
    The compose URL has a length limit. The text form of 9 accounts is less than 2,000 characters. The plain JSON is about 5 times longer.
-6. The import reads both forms. For the text form, it takes the text between the two marker lines and ignores spaces and line breaks. So the person can paste a whole email, with text before and after the markers.
+8. The import reads both forms. For the text form, it takes the text between the two marker lines and ignores spaces and line breaks. So the person can paste a whole email, with text before and after the markers.
 
 ### 2. Export to a file
 
@@ -84,12 +86,15 @@ At the end of this phase, you can export the configuration to a file, or to an e
 ## Out of scope
 
 - Sign-ins, cookies, and sessions. They never leave the computer.
+- The values that belong to one computer. "Move to another computer" in `PRODUCT.md` lists them.
 - Sync between computers. Shifted has no server.
 - Files that open Shifted on a double-click. Installers come in prompt 11.
 
 ## Automated tests
 
 - Unit: export, then import, gives the same values, with new account IDs.
+- Unit: the export has no value that belongs to one computer, for example open at login or a remembered page permission.
+- Unit: the "Always use this account" choice points to the right account after the import.
 - Unit: the export has only the allowed keys. Test it with a configuration that has more keys.
 - Unit: the text form survives a round trip with extra line breaks and extra spaces. It also survives inside a whole email, with text before and after the markers.
 - Unit: the text form of 9 accounts with long nicknames and addresses is less than 2,000 characters.
