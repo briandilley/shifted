@@ -49,7 +49,7 @@ The sum of the unread counts of all accounts, shown on the app icon of Shifted.
 _Avoid_: dock badge, taskbar badge, total badge
 
 **Asleep**:
-The state of a Google app that Shifted unloaded to save memory. Shifted loads it again when you open it.
+The state of a Google app that Shifted unloaded to save memory. If you open it, Shifted loads it again.
 _Avoid_: hibernated, suspended, discarded, closed
 
 **Sign-in window**:
@@ -65,7 +65,7 @@ The values that a person can change in Shifted, for example quiet hours or the c
 _Avoid_: settings, preferences, options
 
 **Configuration window**:
-The Shifted window where you change the configuration. Its title on screen is "Settings", to match the operating systems.
+The Shifted window where you change the configuration. Its title on screen is `Settings`, to match the operating systems.
 _Avoid_: settings window, preferences window
 
 **Default browser**:

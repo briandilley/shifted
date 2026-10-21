@@ -17,15 +17,15 @@ The build tools are:
 
 Each phase must prove that it works in three ways.
 
-1. Unit tests with Vitest, for logic that needs no Google page. Examples: the link rules, the parsing of the Atom feed, the choice of the unread-count feed, the detection of new messages, snooze, quiet hours, the parsing of `mailto:` links, the configuration file, and the shortcut table.
+1. Unit tests with Vitest, for logic that needs no Google page. Examples are the link rules, the Atom feed parser, and the choice of the unread-count feed. Others are the detection of new messages, snooze, quiet hours, the `mailto:` parser, the configuration file, and the shortcut table.
 2. End-to-end tests with Playwright for Electron. They start Shifted and drive its own screens: the sidebar, the tab bar, the account picker, the sign-in window, and the configuration window. In these tests, Shifted loads fake local pages in place of Gmail, Calendar, Google sign-in, and the Atom feed. A local test server serves the fake pages.
-3. Hand checks, for what a test cannot do: a real Google sign-in, real Gmail and Calendar, and real desktop notifications.
+3. Manual tests, for what an automated test cannot do: a real Google sign-in, real Gmail and Calendar, and real desktop notifications.
 
 Rules for tests:
 
 - All Google URLs of Shifted are in one module. In test mode, that module points to the local test server. Nothing else in Shifted contains a Google URL.
 - Tests never use a real Google account, and the code repo never contains a password or a cookie.
-- A phase is done only when `npm test` and `npm run test:e2e` pass and every hand check of the phase passes.
+- A phase is done after `npm test` passes, `npm run test:e2e` passes, and every manual test of the phase passes.
 
 ## Rules for the build agent
 

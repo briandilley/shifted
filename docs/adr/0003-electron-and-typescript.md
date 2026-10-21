@@ -6,6 +6,6 @@ We chose Electron because it bundles Chromium, the engine of Google Chrome. Goog
 
 ## Considered Options
 
-- Tauri 2. It uses the web view of each operating system, so it is much smaller. Rejected because more than one web view in a window is still an unstable feature, the storage for each account works differently on each operating system, and Google sign-in in WebKit web views is a known risk.
+- Tauri 2. It uses the web view of each operating system, so it is much smaller. Rejected for three reasons. More than one web view in a window is still an unstable feature. The storage for each account works differently on each operating system. Google sign-in in WebKit web views is a known risk.
 - Qt WebEngine. It is real Chromium with one profile for each account. Rejected because fewer coding agents write good Qt code, and packaging for three operating systems is harder.
 - A native app for each operating system. Rejected because it triples the work.

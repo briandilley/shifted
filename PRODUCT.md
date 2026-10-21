@@ -59,7 +59,7 @@ Example: you add `name@company.com`. Google sends you to `company.okta.com` to s
 - The top of the sign-in window shows one line of help from Shifted. The rest of the window shows Google's sign-in page.
 - While the sign-in window is open, the content area of the account says that sign-in is in progress.
 - When Gmail loads in the sign-in window, Shifted closes the sign-in window and shows Gmail of that account in the main window.
-- If Google signs an account out, the content area of that account says that the account is signed out and shows a "Sign in again" button. The button opens the sign-in window for that account. Shifted never shows Google's sign-in page in the content area.
+- If Google signs an account out, the content area of that account says so. It also shows a "Sign in again" button. The button opens the sign-in window for that account. Shifted never shows Google's sign-in page in the content area.
 - Shifted never pretends to be another browser. See `docs/adr/0004-honest-user-agent-for-sign-in.md`.
 - On macOS and Linux, passkeys do not work in Shifted. When Google asks for a passkey, you click "Try another way" and use your password and 2-Step Verification. The top line of the sign-in window tells you this.
 - On Windows, Google's passkey request goes to Windows Hello, which shows its own dialog.
@@ -87,7 +87,7 @@ Shifted has one main window. The sidebar is on the left. The tab bar is at the t
 
 - Each account shows the Google profile photo of the account, inside a ring in the account color. The unread badge sits on the corner of the photo.
 - After Gmail of an account loads, Shifted reads the profile photo from the Gmail page and saves a copy on disk. If Shifted cannot read the photo, it shows the first letter of the account name on the account color.
-- Shifted learns the email address of each account from the title of its Atom feed, "Gmail - Inbox for <address>".
+- Shifted learns the email address of each account from the title of its Atom feed, `Gmail - Inbox for <address>`.
 - The account name is the email address. You can give an account a nickname. When you point to an account, Shifted shows the nickname and the address.
 - Each new account gets the next color from a fixed set of 8 colors. You can change the color of an account.
 - You drag an account to change the order. The order decides the numbers of Cmd+1 to Cmd+9.
@@ -118,20 +118,20 @@ Rule 5 has a known cost. Example: you click a Google Docs link in account B. The
 - Each account in the sidebar shows its unread count on its avatar. If the count is 0, Shifted shows no badge.
 - The unread count of an account is the number that Gmail shows next to Inbox for that account.
 - The app icon shows the sum of the unread counts of all accounts. On macOS this is the Dock badge. On Windows it is an overlay on the taskbar icon. On Linux it is the launcher badge, on desktops that support one.
-- Shifted gets each unread count from the Gmail Atom feed with the session of the account, about every 60 seconds, and when you switch accounts. See `docs/adr/0005-unread-counts-from-gmail-atom-feed.md`.
+- Shifted gets each unread count from the Gmail Atom feed, with the session of the account. It reads the feed about every 60 seconds, and each time you switch accounts. See `docs/adr/0005-unread-counts-from-gmail-atom-feed.md`.
 - When the inbox of an account uses category tabs, Gmail counts only the Primary tab. Shifted learns this for each account the first time Gmail loads, and then reads the matching feed.
 - Each account has an override in configuration: "Primary", "Whole inbox", or "Important".
-- If Shifted cannot read the feed of an account, for example because the account is signed out, the badge of that account shows a warning mark instead of a number.
+- If Shifted cannot read the feed of an account, the badge of that account shows a warning mark instead of a number. Example: the account is signed out.
 
 ## Notifications
 
 New mail:
 
-- Shifted makes the new-mail notifications itself, from the same Atom feed as the unread badges. They work when Gmail is asleep.
+- Shifted makes the new-mail notifications itself, from the same Atom feed as the unread badges. They also work for an account whose Gmail is asleep.
 - Shifted shows one notification for each new unread message in the feed that the unread count uses. The notification shows the account, the sender, and the subject.
 - When Shifted starts, and after you sign in to an account, Shifted reads the feed once without notifications. This prevents a burst of old messages.
 - When you click a new-mail notification, Shifted comes to the front, selects the account, shows the Gmail tab, and opens that message.
-- If Gmail's own new-mail notifications are on in Gmail's settings, you get two notifications for each message. The help text of Shifted tells you to keep Gmail's own new-mail notifications off.
+- If Gmail's own new-mail notifications are on (Gmail `Settings` > `Desktop notifications`), you get two notifications for each message. The help text of Shifted tells you to keep Gmail's own new-mail notifications off.
 
 Calendar and Chat:
 
@@ -151,7 +151,7 @@ Controls:
 - Shifted can be the default email app of the computer. The configuration has a "Make Shifted the default email app" button. On macOS and Linux, the button sets Shifted as the handler for `mailto:` links. On Windows, the button opens the Windows "Default apps" page, where you choose Shifted, because Windows does not let an app make itself the default.
 - When another app opens a `mailto:` link, Shifted shows the account picker. If Shifted is not running, the operating system starts it first.
 - The account picker lists the accounts. The account that you used last for a `mailto:` link is selected, so Enter picks it.
-- The account picker has an "Always use this account" box. If you check it, later `mailto:` links skip the picker. The configuration can clear this choice.
+- The account picker has an "Always use this account" box. If you select it, later `mailto:` links skip the picker. The configuration can clear this choice.
 - After you pick an account, Shifted selects that account in the main window, shows its Gmail tab, and opens a new message. The new message has the address, subject, and body from the link. If Gmail of that account is asleep, Shifted loads it first.
 - A `mailto:` link inside Gmail or Calendar of an account opens a new message in the Gmail of the same account, without the account picker.
 
@@ -180,10 +180,10 @@ Cmd is the Command key on macOS. On Windows and Linux, use Ctrl in place of Cmd.
 These rules apply to the Gmail and Calendar pages of each account, and to their child windows.
 
 - Notifications: always allowed. The notification switches of Shifted decide what shows.
-- Camera and microphone: Shifted asks you the first time a page of an account asks for them, for example when you join a Google Chat huddle in Gmail. Shifted remembers your answer for that account.
-- Screen sharing: Shifted asks you the first time a page of an account asks for it. Then the screen picker of the operating system lets you choose what to share.
-- Clipboard read: Shifted asks you the first time a page of an account asks for it. Shifted remembers your answer for that account.
-- Shifted never asks for a permission at startup. It asks only when a page needs it.
+- Camera and microphone: the first time a page of an account asks for them, Shifted asks you. Example: you join a Google Chat huddle in Gmail. Shifted remembers your answer for that account.
+- Screen sharing: the first time a page of an account asks for it, Shifted asks you. Then a screen picker lets you choose what to share. On macOS, and on Linux with Wayland, it is the picker of the operating system. On Windows, and on Linux with X11, it is a small Shifted picker.
+- Clipboard read: the first time a page of an account asks for it, Shifted asks you. Shifted remembers your answer for that account.
+- Shifted never asks for a permission at startup. Only a request from a page makes Shifted ask.
 - The configuration can reset the remembered answers of an account.
 - Every other permission is denied without a question. Examples: location, USB, MIDI, and Bluetooth.
 - On macOS, the operating system also asks once for camera, microphone, and screen recording access. Shifted must declare why it needs them.
@@ -197,7 +197,7 @@ These rules apply to the Gmail and Calendar pages of each account, and to their 
 
 ## Background loading
 
-A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
+A configuration value, "Background loading", decides which Google apps stay loaded in the background. A loaded Google app uses roughly 200 to 500 MB of memory.
 
 | Value | What stays loaded | What sleeps |
 | --- | --- | --- |
@@ -205,7 +205,7 @@ A configuration value, "Background loading", decides which Google apps stay load
 | Calendars only | Calendar of every account, and the Google apps of the selected account. | Gmail of each other account, 5 minutes after you leave it. |
 | Selected account only | The Google apps of the selected account. | All Google apps of each other account, 5 minutes after you leave it. |
 
-- A sleeping Google app loads again when you open it.
+- If you open a sleeping Google app, it loads again.
 - Unread badges stay current in every value, because they do not need Gmail to be loaded.
 - With "Selected account only", Calendar reminders come only from the selected account.
 
@@ -219,7 +219,7 @@ A configuration value, "Background loading", decides which Google apps stay load
 
 ## Configuration
 
-The configuration window has the title "Settings". Cmd+, opens it. The context menu of an account opens the page of that account.
+The configuration window has the title `Settings`. Cmd+, opens it. The context menu of an account opens the page of that account.
 
 ```
 Settings
@@ -260,7 +260,7 @@ Shifted saves the configuration in one JSON file in its app data folder. The ses
 
 - The screens of Shifted are in English only in version 1. Gmail and Calendar keep the language of each Google account.
 - The screens of Shifted follow the light or dark mode of the operating system.
-- Spell check is on in Gmail and Calendar, with the languages of the operating system.
+- Shifted marks spelling mistakes in Gmail and Calendar, in the languages of the operating system.
 
 ## Failure states
 
@@ -271,9 +271,9 @@ Shifted saves the configuration in one JSON file in its app data folder. The ses
 ## Privacy and network
 
 - Shifted has no server of its own.
-- Shifted has no sign-up, no license check, no telemetry, no crash reporting, and no settings sync.
+- Shifted has no sign-up, no license key, no telemetry, no crash reporting, and no configuration sync.
 - All data of Shifted stays on the computer: the account list, the configuration, and the sessions.
-- The only network traffic is the traffic of Google's own pages, the pages of a company identity provider during sign-in, and the update check if the build has one.
+- Shifted sends network traffic only to Google's own pages. During sign-in, it also goes to the pages of a company identity provider. A build with auto-update also asks for updates.
 
 ## Distribution
 

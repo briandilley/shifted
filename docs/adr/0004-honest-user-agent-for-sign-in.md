@@ -4,13 +4,13 @@ Shifted never pretends to be another browser. Its user agent keeps the Electron 
 
 Google blocks sign-in from browsers that use the user agent of another browser, for example Chrome. Some Electron wrappers fake a Chrome user agent to get past this block. We tested both choices on 2026-10-21 with a throwaway prototype on Electron 45 (Chromium 156), with one persistent session for each account:
 
-- With a Chrome user agent (the Electron and app tokens removed), Google rejected the sign-in right after the email address: "Couldn't sign you in. This browser or app may not be secure." This happened every time.
+- With a Chrome user agent (the Electron and app tokens removed), Google rejected the sign-in right after the email address: `Couldn't sign you in. This browser or app may not be secure.` This happened every time.
 - With the default Electron user agent, Google allowed the sign-in through its simpler "lite" sign-in pages. A personal Gmail account and a Google Workspace account both reached Gmail. Calendar then loaded in the same session without a new sign-in. The session was still signed in after the app quit and started again.
 
 ## Consequences
 
 - Passkeys do not work on macOS and Linux. Electron 45 has no passkey dialog of its own, so the passkey step waits forever or fails. You must click "Try another way" and use a password and 2-Step Verification, for example the prompt on your phone. Shifted tells you this in the sign-in window.
-- On macOS, Apple lets an app use the passkeys of the user (iCloud Keychain or a phone) on any website only if the app has a browser entitlement. Apple grants that entitlement after a review against browser criteria, and a Gmail wrapper is unlikely to qualify.
+- On macOS, the passkeys of the user are in iCloud Keychain or on a phone. Apple lets an app use them on any website only with a browser entitlement. Apple grants that entitlement after a review against browser criteria, and a Gmail wrapper is unlikely to qualify.
 - On Windows, Chromium gives passkey requests to Windows Hello, which shows its own dialog. This works in Electron in general, but we did not test it with Google.
 - Electron 45 adds `app.configureWebAuthn({ touchID })` on macOS. It supports a Touch ID passkey that only Shifted on that Mac can use. An optional later prompt can add this after a prototype shows that Google lets an account create such a passkey.
 - An account that can only sign in with a passkey or a hardware security key (for example Google Advanced Protection) was not tested. Expect it to fail.

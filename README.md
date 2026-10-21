@@ -24,8 +24,8 @@ Each prompt in `prompts/` stands on its own. It has these parts:
 2. Read first: the spec files that the agent reads before it starts. The agent reads them from `docs/spec/` in the code repo of the app.
 3. Scope: what the agent builds in this phase.
 4. Out of scope: what the agent does not build in this phase.
-5. Tests: the unit tests and end-to-end tests that the agent adds in this phase.
-6. Hand checks: the steps that you do by hand to make sure that the phase works.
+5. Automated tests: the unit tests and end-to-end tests that the agent adds in this phase.
+6. Manual tests: the steps that you do by hand to make sure that the phase works.
 
 ## The prompts
 
@@ -39,8 +39,8 @@ Each prompt in `prompts/` stands on its own. It has these parts:
 | `prompts/05-notifications.md` | New-mail notifications from the feed, Calendar and Chat notifications, the switches, snooze, and quiet hours. |
 | `prompts/06-mailto.md` | The account picker, the new message, and the default email app. |
 | `prompts/07-shortcuts-and-background.md` | Keyboard shortcuts, background loading, hide on close, the tray icon, and open at login. |
-| `prompts/08-hardening.md` | Security, crash and offline states, accessibility, and hand checks on all three platforms. |
-| `prompts/09-release-check.md` | A full pass of the hand checks, and the README of the code repo. |
+| `prompts/08-hardening.md` | Security, crash and offline states, accessibility, and tests on all three platforms. |
+| `prompts/09-release.md` | A trace of every rule of the spec, one list of manual tests, and the README of the code repo. |
 | `prompts/10-installers-and-updates.md` | Optional: signed installers and auto-update. |
 | `prompts/11-touch-id-passkeys.md` | Optional: Touch ID passkeys on macOS. It starts with a prototype. |
 
@@ -51,6 +51,6 @@ Each prompt in `prompts/` stands on its own. It has these parts:
 3. Make an empty folder for the code of the app. This folder is the code repo. It is not the clone of this repo.
 4. Open a fresh agent session in the code repo for each prompt, in number order. Give the agent the path of your clone of this repo in the first session.
 5. Prompt 00 copies `PRODUCT.md`, `BUILD.md`, `GLOSSARY.md`, `PRIOR-ART.md`, and `docs/adr/` into `docs/spec/` in the code repo. The later prompts read the spec from there.
-6. After the agent finishes a prompt, do the hand checks at the end of that prompt.
-7. If a hand check fails, tell the agent which check failed before you go to the next prompt.
-8. The last prompt is optional. Use it only if you want signed installers and auto-update.
+6. After the agent finishes a prompt, do the manual tests at the end of that prompt.
+7. If a manual test fails, tell the agent which test failed. Do this before you go to the next prompt.
+8. The last prompt is optional. If you want signed installers and auto-update, use it.
