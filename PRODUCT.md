@@ -11,7 +11,14 @@ All prompts read the name from this section. To rename the app, change it here.
 
 ## What Shifted is
 
-Shifted is a desktop app that keeps several Gmail accounts in one window. Each account shows Gmail's own web interface. You switch between accounts from a sidebar.
+Shifted is a desktop app that keeps several Gmail accounts in one window. Each account shows Gmail and Google Calendar, with Google's own web interface. You switch between accounts from a sidebar.
+
+## Google apps in each account
+
+- Each account shows two Google apps: Gmail (`https://mail.google.com`) and Google Calendar (`https://calendar.google.com`).
+- Gmail and Calendar in one account use the same session, so you sign in once for both.
+- Google Chat and Google Meet appear inside Gmail where Google puts them. Shifted does not show them as separate apps.
+- Shifted does not show any other Google app, for example Drive, Docs, or Contacts.
 
 ## Platforms
 
