@@ -43,7 +43,7 @@ Status: the prompts for version 1 are complete. Nobody has built the full app fr
 
    The list of manual tests is in `docs/manual-tests.md` in the app folder. It starts with the sign-in of your Google accounts.
 
-The agent builds the 10 phases one after the other, with no stops for you. A full build takes hours, not minutes. The agent records its progress in `docs/build-progress.md`. It stops early in three cases: a tool is missing, a phase still fails after 3 repair attempts, or the spec has a conflict.
+The agent builds the 11 phases one after the other, with no stops for you. A full build takes hours, not minutes. The agent records its progress in `docs/build-progress.md`. It stops early in three cases: a tool is missing, a phase still fails after 3 repair attempts, or the spec has a conflict.
 
 A full build runs many commands. If your agent asks before each command, the build waits for you. In Claude Code, answer the first question for each command with the option that does not ask again. Other agents have a similar mode. Use it only in the new app folder.
 
@@ -63,13 +63,13 @@ On macOS and Linux, passkeys do not work in Shifted. If Google asks for a passke
 
 ### The optional prompts
 
-- Prompt 10 makes signed installers and auto-update. It needs an Apple Developer account for macOS and a code-signing certificate for Windows.
-- Prompt 11 tries Touch ID passkeys on macOS. It needs the signed build of prompt 10.
+- Prompt 11 makes signed installers and auto-update. It needs an Apple Developer account for macOS and a code-signing certificate for Windows.
+- Prompt 12 tries Touch ID passkeys on macOS. It needs the signed build of prompt 11.
 
 To run one of them, paste a message like this into your agent in the app folder:
 
 ```text
-Read docs/spec/prompts/10-installers-and-updates.md and do what it says.
+Read docs/spec/prompts/11-installers-and-updates.md and do what it says.
 ```
 
 ## Run the prompts one at a time
@@ -115,7 +115,7 @@ that the new spec needs. Do not change the code yet.
 
 | Prompt | Phase |
 | --- | --- |
-| `prompts/build-all.md` | The master prompt. It runs the prompts 00 to 09 in order, each in a fresh context, and tracks the progress. |
+| `prompts/build-all.md` | The master prompt. It runs the prompts 00 to 10 in order, each in a fresh context, and tracks the progress. |
 | `prompts/00-bootstrap.md` | The code repo, the spec copy, `AGENTS.md`, Electron with React and TypeScript, Vitest, Playwright, and the fake Google test server. |
 | `prompts/01-one-account.md` | One account: its session, the sign-in window, Gmail, the signed-out state, and sign-in that survives a restart. |
 | `prompts/02-many-accounts.md` | The sidebar, the profile photo with a color ring, reordering, the context menu, the tab bar, and the configuration window. |
@@ -124,10 +124,11 @@ that the new spec needs. Do not change the code yet.
 | `prompts/05-notifications.md` | New-mail notifications from the feed, Calendar and Chat notifications, the switches, snooze, and quiet hours. |
 | `prompts/06-mailto.md` | The account picker, the new message, and the default email app. |
 | `prompts/07-shortcuts-and-background.md` | Keyboard shortcuts, background loading, hide on close, the tray icon, and open at login. |
-| `prompts/08-hardening.md` | Security, crash and offline states, accessibility, and tests on all three platforms. |
-| `prompts/09-release.md` | A trace of every rule of the spec, one list of manual tests, and the README of the code repo. |
-| `prompts/10-installers-and-updates.md` | Optional: signed installers and auto-update. |
-| `prompts/11-touch-id-passkeys.md` | Optional: Touch ID passkeys on macOS. It starts with a prototype. |
+| `prompts/08-export-and-import.md` | Export the configuration to a file or to an email, and import it on another computer. |
+| `prompts/09-hardening.md` | Security, crash and offline states, accessibility, and tests on all three platforms. |
+| `prompts/10-release.md` | A trace of every rule of the spec, one list of manual tests, and the README of the code repo. |
+| `prompts/11-installers-and-updates.md` | Optional: signed installers and auto-update. |
+| `prompts/12-touch-id-passkeys.md` | Optional: Touch ID passkeys on macOS. It starts with a prototype. |
 
 ## How each prompt is built
 
