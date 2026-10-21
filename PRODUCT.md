@@ -55,6 +55,12 @@ Shifted supports every Google account that has Gmail:
 
 Example: you add `name@company.com`. Google sends you to `company.okta.com` to sign in. Shifted shows the Okta page in the app, because it is part of the sign-in. After the sign-in, Shifted returns to Gmail.
 
+## Distribution
+
+- The main prompts build a version of Shifted that you run from source on your own computer.
+- The last prompt is optional. It adds signed installers and auto-update for macOS, Windows, and Linux.
+- The optional prompt needs an Apple Developer account for macOS and a code-signing certificate for Windows.
+
 ## Accounts and sessions
 
 - Each account has its own session, with its own cookies and site data. See `docs/adr/0002-isolated-session-per-account.md`.

@@ -31,3 +31,4 @@ Each prompt in `prompts/` stands on its own. It has these parts:
 2. Open a fresh agent session for each prompt, in number order.
 3. After the agent finishes a prompt, do the hand checks at the end of that prompt.
 4. If a hand check fails, tell the agent which check failed before you go to the next prompt.
+5. The last prompt is optional. Use it only if you want signed installers and auto-update.
