@@ -110,8 +110,8 @@ Cmd is the Command key on macOS. On Windows and Linux, use Ctrl in place of Cmd.
 | Jump to account 1 to 9 | Cmd+1 to Cmd+9 |
 | Next account | Ctrl+Tab |
 | Previous account | Ctrl+Shift+Tab |
-| Gmail tab | Cmd+Shift+M |
-| Calendar tab | Cmd+Shift+C (conflict with Gmail, see open questions) |
+| Gmail tab | Cmd+Shift+1 |
+| Calendar tab | Cmd+Shift+2 |
 | Reload the Google app | Cmd+R |
 | Configuration | Cmd+, |
 | Add account | Cmd+Shift+N |
@@ -119,6 +119,7 @@ Cmd is the Command key on macOS. On Windows and Linux, use Ctrl in place of Cmd.
 
 - The order of the accounts in the sidebar decides the numbers 1 to 9.
 - The shortcuts are fixed in version 1. You cannot change them.
+- No shortcut of Shifted uses a key that Gmail or Calendar already uses. Example: Cmd+Shift+C adds Cc recipients in Gmail, so Shifted does not use it.
 
 ## Background loading
 
@@ -197,4 +198,3 @@ These items are not decided yet. The prompts will not be complete until each ite
 
 - The UI library for the sidebar.
 - How the app gets the unread count for each account.
-- Keyboard shortcuts: Cmd+Shift+C is also the Gmail shortcut that adds Cc recipients. Pick another key for the Calendar tab.
