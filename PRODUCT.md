@@ -92,6 +92,15 @@ Controls:
 - Shifted uses the notification system of the operating system. So macOS Focus, Windows Do Not Disturb, and the Do Not Disturb mode of a Linux desktop also hide notifications from Shifted.
 - A notification that snooze or quiet hours stopped does not show later.
 
+## mailto: links
+
+- Shifted can be the default email app of the computer. The configuration has a "Make Shifted the default email app" button. On macOS and Linux, the button sets Shifted as the handler for `mailto:` links. On Windows, the button opens the Windows "Default apps" page, where you choose Shifted, because Windows does not let an app make itself the default.
+- When another app opens a `mailto:` link, Shifted shows the account picker. If Shifted is not running, the operating system starts it first.
+- The account picker lists the accounts. The account that you used last for a `mailto:` link is selected, so Enter picks it.
+- The account picker has an "Always use this account" box. If you check it, later `mailto:` links skip the picker. The configuration can clear this choice.
+- After you pick an account, Shifted selects that account in the main window, shows its Gmail tab, and opens a new message. The new message has the address, subject, and body from the link. If Gmail of that account is asleep, Shifted loads it first.
+- A `mailto:` link inside Gmail or Calendar of an account opens a new message in the Gmail of the same account, without the account picker.
+
 ## Background loading
 
 A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
@@ -169,5 +178,4 @@ These items are not decided yet. The prompts will not be complete until each ite
 
 - The UI library for the sidebar.
 - How the app gets the unread count for each account.
-- `mailto:` handler: details.
 - Keyboard shortcuts: the exact keys.

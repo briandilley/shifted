@@ -56,6 +56,10 @@ _Avoid_: hibernated, suspended, discarded, closed
 A small separate Shifted window that shows Google's sign-in page for one account, with the session of that account.
 _Avoid_: login window, auth popup, sign-in dialog
 
+**Account picker**:
+The small Shifted window that asks which account to use for a `mailto:` link from another app.
+_Avoid_: chooser, selector, mailbox dialog
+
 **Default browser**:
 The web browser that the operating system opens for web links, for example Chrome, Safari, Edge, or Firefox.
 _Avoid_: external browser, system browser
