@@ -136,6 +136,17 @@ A configuration value, "Background loading", decides which Google apps stay load
 - Unread badges stay current in every value, because they do not need Gmail to be loaded.
 - With "Selected account only", Calendar reminders come only from the selected account.
 
+## Accounts in the sidebar
+
+- Each account shows the Google profile photo of the account, inside a ring in the account color. The unread badge sits on the corner of the photo.
+- After Gmail of an account loads, Shifted reads the profile photo from the Gmail page and saves a copy on disk. If Shifted cannot read the photo, it shows the first letter of the account name on the account color.
+- Shifted learns the email address of each account from the title of its Atom feed, "Gmail - Inbox for <address>".
+- The account name is the email address. You can give an account a nickname. When you point to an account, Shifted shows the nickname and the address.
+- Each new account gets the next color from a fixed set of 8 colors. You can change the color of an account.
+- You drag an account to change the order. The order decides the numbers of Cmd+1 to Cmd+9.
+- The context menu of an account (right-click) has: Rename, Color, Notifications, Sign out, and Remove.
+- Remove asks you to confirm, then deletes the account and its session.
+
 ## Supported accounts
 
 Shifted supports every Google account that has Gmail:
