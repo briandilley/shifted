@@ -69,6 +69,21 @@ Shifted has one main window. The sidebar is on the left. The tab bar is at the t
 - Each account has an override in configuration: "Primary", "Whole inbox", or "Important".
 - If Shifted cannot read the feed of an account, for example because the account is signed out, the badge of that account shows a warning mark instead of a number.
 
+## Notifications
+
+New mail:
+
+- Shifted makes the new-mail notifications itself, from the same Atom feed as the unread badges. They work when Gmail is asleep.
+- Shifted shows one notification for each new unread message in the feed that the unread count uses. The notification shows the account, the sender, and the subject.
+- When Shifted starts, and after you sign in to an account, Shifted reads the feed once without notifications. This prevents a burst of old messages.
+- When you click a new-mail notification, Shifted comes to the front, selects the account, shows the Gmail tab, and opens that message.
+- If Gmail's own new-mail notifications are on in Gmail's settings, you get two notifications for each message. The help text of Shifted tells you to keep Gmail's own new-mail notifications off.
+
+Calendar and Chat:
+
+- Calendar reminders and Google Chat messages come from the web notifications of the Calendar and Gmail pages. Shifted allows these notifications and shows them as desktop notifications.
+- When you click one of these notifications, Shifted comes to the front and selects the account and the tab that sent it.
+
 ## Background loading
 
 A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
@@ -146,6 +161,6 @@ These items are not decided yet. The prompts will not be complete until each ite
 
 - The UI library for the sidebar.
 - How the app gets the unread count for each account.
-- Notifications: details.
+- Notifications: per-account switches, snooze, and quiet hours.
 - `mailto:` handler: details.
 - Keyboard shortcuts: the exact keys.
