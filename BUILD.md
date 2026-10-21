@@ -26,3 +26,11 @@ Rules for tests:
 - All Google URLs of Shifted are in one module. In test mode, that module points to the local test server. Nothing else in Shifted contains a Google URL.
 - Tests never use a real Google account, and the code repo never contains a password or a cookie.
 - A phase is done only when `npm test` and `npm run test:e2e` pass and every hand check of the phase passes.
+
+## Rules for the build agent
+
+- Never edit the files in `docs/spec/`. They are a copy of the spec repo.
+- If the spec is silent about something, pick the simplest choice that fits the spec. Write the choice and the reason in `docs/decisions.md` in the code repo.
+- If the spec conflicts with what you find, stop and ask the person. Example: Google changed a page, and a rule in the spec no longer works.
+- Use the words of `docs/spec/GLOSSARY.md` in code, comments, and commit messages.
+- End each phase with one git commit that names the phase, for example `Phase 03: unread badges`.
