@@ -40,6 +40,10 @@ _Avoid_: active account, current account
 A separate Shifted window that shows a Gmail pop-out for one account, with the session of that account.
 _Avoid_: popup, new tab, secondary window
 
+**Asleep**:
+The state of a Google app that Shifted unloaded to save memory. Shifted loads it again when you open it.
+_Avoid_: hibernated, suspended, discarded, closed
+
 **Sign-in window**:
 A small separate Shifted window that shows Google's sign-in page for one account, with the session of that account.
 _Avoid_: login window, auth popup, sign-in dialog

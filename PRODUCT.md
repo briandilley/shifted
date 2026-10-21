@@ -59,6 +59,20 @@ Shifted has one main window. The sidebar is on the left. The tab bar is at the t
 - The tab bar shows one tab for each Google app of the selected account: Gmail and Calendar. Click a tab to show that Google app in the content area.
 - Each account remembers the Google app that you used last. When you switch back to that account, Shifted shows that Google app.
 
+## Background loading
+
+A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
+
+| Value | What stays loaded | What sleeps |
+| --- | --- | --- |
+| Everything (default) | Gmail and Calendar of every account. | Nothing. |
+| Calendars only | Calendar of every account, and the Google apps of the selected account. | Gmail of each other account, 5 minutes after you leave it. |
+| Selected account only | The Google apps of the selected account. | All Google apps of each other account, 5 minutes after you leave it. |
+
+- A sleeping Google app loads again when you open it.
+- Unread badges stay current in every value, because they do not need Gmail to be loaded.
+- With "Selected account only", Calendar reminders come only from the selected account.
+
 ## Supported accounts
 
 Shifted supports every Google account that has Gmail:
