@@ -32,6 +32,15 @@ The build tools are:
 - electron-vite, for the development server and the build of the main process, the preload scripts, and the renderer.
 - electron-builder, for installers on all three platforms. Its electron-updater part gives auto-update on macOS, Windows, and Linux (AppImage). The other choice, Electron Forge, has no auto-update for Linux.
 
+## Version 1 features
+
+Version 1 has these features, in addition to the sidebar, the tab bar, and adding and removing accounts. Each feature has its own section below when its details are decided.
+
+- Unread badges: an unread count on each account in the sidebar, and the total on the app icon.
+- Notifications: desktop notifications for new mail and for Calendar reminders, in every account.
+- `mailto:` handler: Shifted can be the default email app of the computer.
+- Keyboard shortcuts: jump to an account, move to the previous or next account, and switch between the Gmail and Calendar tabs.
+
 ## Window and sidebar
 
 Shifted has one main window. The sidebar is on the left. The tab bar is at the top of the right side. The content area is below the tab bar. The content area shows one Google app of one account at a time.
@@ -113,4 +122,7 @@ These items are not decided yet. The prompts will not be complete until each ite
 
 - The UI library for the sidebar.
 - How the app gets the unread count for each account.
-- The feature list for the first version.
+- Unread badges: what the count means, and how Shifted gets it.
+- Notifications: details.
+- `mailto:` handler: details.
+- Keyboard shortcuts: the exact keys.
