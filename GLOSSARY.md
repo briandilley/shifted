@@ -24,8 +24,12 @@ _Avoid_: app, service, view, tab
 The vertical strip on the left side of the window that lists the accounts.
 _Avoid_: dock, rail, toolbar, account switcher
 
+**Tab bar**:
+The thin bar above the content area, with one tab for each Google app of the selected account.
+_Avoid_: toolbar, header, app switcher
+
 **Content area**:
-The part of the window to the right of the sidebar, which shows one Google app of one account.
+The part of the window below the tab bar, which shows one Google app of one account.
 _Avoid_: main view, web view, pane
 
 **Selected account**:

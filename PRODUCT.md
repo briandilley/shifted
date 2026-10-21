@@ -34,24 +34,21 @@ The build tools are:
 
 ## Window and sidebar
 
-Shifted has one main window. The sidebar is on the left. The content area is on the right. The content area shows one Google app of one account at a time.
+Shifted has one main window. The sidebar is on the left. The tab bar is at the top of the right side. The content area is below the tab bar. The content area shows one Google app of one account at a time.
 
 ```
 +----+---------------------------+
-| [A]|                           |
-|  M |                           |
-|  C |     Gmail of account A    |
-| [B]|                           |
+| [A]| [ Gmail ] [ Calendar ]    |
+| [B]+---------------------------+
 | [C]|                           |
-|    |                           |
+|    |   Calendar of account A   |
 | [+]|                           |
 +----+---------------------------+
 ```
 
 - The sidebar shows one avatar for each account, in a vertical list. The add-account button is below the list.
-- Under the avatar of the selected account, the sidebar shows two small icons: Gmail (M in the drawing) and Calendar (C in the drawing). Click an icon to show that Google app in the content area.
+- The tab bar shows one tab for each Google app of the selected account: Gmail and Calendar. Click a tab to show that Google app in the content area.
 - Each account remembers the Google app that you used last. When you switch back to that account, Shifted shows that Google app.
-- There is no bar above the content area. Gmail and Calendar use the full height of the window.
 
 ## Supported accounts
 
@@ -81,7 +78,7 @@ Example: you add `name@company.com`. Google sends you to `company.okta.com` to s
 Shifted decides where each link opens. The rules apply to links that you click and to pages that Gmail or Calendar opens on their own.
 
 1. A Gmail link opens in the Gmail Google app of the same account.
-2. A Calendar link opens in the Calendar Google app of the same account. Example: in Gmail, you click an event invitation that goes to `calendar.google.com`. Shifted switches the account to its Calendar Google app and shows the event.
+2. A Calendar link opens in the Calendar Google app of the same account. Example: in Gmail, you click an event invitation that goes to `calendar.google.com`. Shifted switches to the Calendar tab of the same account and shows the event. It does not open a new window.
 3. During sign-in, every page stays in Shifted. This includes Google's sign-in pages and the pages of a company identity provider. Sign-in starts when Google's sign-in page loads, and it ends when Gmail or Calendar loads.
 4. A Gmail pop-out opens in a child window that uses the session of the same account. Examples: pop-out compose, the print view, and "Open in new window".
 5. Every other link opens in the default browser of the computer. This includes Google Docs, Drive, Meet, and Contacts.
