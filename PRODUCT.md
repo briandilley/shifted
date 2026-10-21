@@ -60,6 +60,12 @@ Shifted supports every Google account that has Gmail:
 
 Example: you add `name@company.com`. Google sends you to `company.okta.com` to sign in. Shifted shows the Okta page in the app, because it is part of the sign-in. After the sign-in, Shifted returns to Gmail.
 
+## Sign-in
+
+- You sign in on Google's own sign-in page, inside Shifted, in the session of the account.
+- Shifted never pretends to be another browser. See `docs/adr/0004-honest-user-agent-for-sign-in.md`.
+- Passkeys do not work in Shifted. When Google asks for a passkey, you click "Try another way" and use your password and 2-Step Verification. The sign-in screen of Shifted tells you this before you start.
+
 ## Distribution
 
 - The main prompts build a version of Shifted that you run from source on your own computer.
@@ -102,6 +108,6 @@ Rule 5 has a known cost. Example: you click a Google Docs link in account B. The
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
 - The UI library for the sidebar.
-- How you sign in to Google inside the app.
+- Where the sign-in page shows: in the content area, or in a separate sign-in window.
 - How the app gets the unread count for each account.
 - The feature list for the first version.
