@@ -34,3 +34,14 @@ Rules for tests:
 - If the spec conflicts with what you find, stop and ask the person. Example: Google changed a page, and a rule in the spec no longer works.
 - Use the words of `docs/spec/GLOSSARY.md` in code, comments, and commit messages.
 - End each phase with one git commit that names the phase, for example `Phase 03: unread badges`.
+
+## Security
+
+- Every web view that shows a Google page runs with `sandbox: true`, `contextIsolation: true`, and `nodeIntegration: false`.
+- A preload script gives a page only the few functions that Shifted needs. It never gives a page access to Node.js or to the file system.
+- The screens of Shifted have a strict Content Security Policy. They load no remote code.
+- The `<webview>` tag is off. Shifted uses `WebContentsView`.
+- The link rules in `PRODUCT.md` run in the `will-navigate` and `setWindowOpenHandler` handlers of every web view.
+- Shifted locks the Electron fuses: `RunAsNode` off, `EnableNodeOptionsEnvironmentVariable` off, `EnableNodeCliInspectArguments` off, `EnableCookieEncryption` on, `EnableEmbeddedAsarIntegrityValidation` on, and `OnlyLoadAppFromAsar` on.
+- A certificate error blocks the page. Shifted never skips a certificate error.
+- A production build opens no remote debugging port.
