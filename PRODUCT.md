@@ -272,6 +272,7 @@ Shifted saves the configuration in one JSON file in its app data folder. The ses
 
 - Shifted is not a web browser. It has no address bar and no browser tabs, and you cannot use it to visit websites in general.
 - Shifted is not a mail client. It does not call the Gmail API, and it does not draw mail itself. See `docs/adr/0001-wrap-gmail-web-interface.md`.
+- Shifted does not run Chrome extensions in version 1. Electron supports only part of the Chrome extension APIs, and most Gmail extensions need parts that it does not have.
 
 ## Open questions
 
