@@ -17,6 +17,16 @@ Shifted is a desktop app that keeps several Gmail accounts in one window. Each a
 
 Shifted runs on macOS, Windows, and Linux. All three platforms get the same features.
 
+## Supported accounts
+
+Shifted supports every Google account that has Gmail:
+
+- Personal accounts that end in `@gmail.com`.
+- Google Workspace accounts, for example `name@company.com`.
+- Google Workspace accounts that sign in through a company identity provider, for example Okta or Microsoft Entra ID.
+
+Example: you add `name@company.com`. Google sends you to `company.okta.com` to sign in. Shifted shows the Okta page in the app, because it is part of the sign-in. After the sign-in, Shifted returns to Gmail.
+
 ## Accounts and sessions
 
 - Each account has its own session, with its own cookies and site data. See `docs/adr/0002-isolated-session-per-account.md`.
@@ -34,7 +44,6 @@ Shifted runs on macOS, Windows, and Linux. All three platforms get the same feat
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
 - Tech stack.
-- Which kinds of Google accounts the app supports.
 - Which links stay in the app and which links open in the default browser.
 - How you sign in to Google inside the app.
 - How the app gets the unread count for each account.
