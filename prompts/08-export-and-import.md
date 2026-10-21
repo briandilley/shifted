@@ -97,6 +97,7 @@ At the end of this phase, you can export the configuration to a file, or to an e
 - Sign-ins, cookies, and sessions. They never leave the computer.
 - The values that belong to one computer. "Move to another computer" in `PRODUCT.md` lists them.
 - Sync between computers. Shifted has no server.
+- A password or encryption for the exported configuration. It holds no secrets.
 - Files that open Shifted on a double-click. Installers come in prompt 11.
 
 ## Automated tests

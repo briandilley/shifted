@@ -280,6 +280,8 @@ The General page of the configuration window has three buttons:
 
 Gmail cannot attach a file from a link. So the message has the text form, and not the file.
 
+The exported configuration has no password. It holds no secrets, but it lists your addresses and nicknames. Keep it as you keep other personal files.
+
 The main window with no accounts also shows `Import configuration…`, next to `Add account`.
 
 The import merges with the accounts on this computer. It matches the accounts by address:
