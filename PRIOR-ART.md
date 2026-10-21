@@ -8,7 +8,7 @@ The file describes Shift 9, the email-focused version. Shift 9 shut down on 2026
 
 ## What Shift does
 
-- Shift is built on Chromium, the open-source base of Google Chrome. Its sidebar, settings, and dialogs are a web interface inside the app.
+- Shift is built on Chromium, the open-source base of Google Chrome. Its sidebar, configuration screens, and dialogs are a web interface inside the app.
 - Each account has its own cookie and site-data store, so each Google account stays signed in on its own.
 - A sidebar lists the accounts. Each account shows several Google apps, for example Gmail, Calendar, and Drive.
 - Shift reads the unread count of each account from the Gmail page and shows a badge on each account. The total goes on the Dock icon.
