@@ -26,6 +26,12 @@ Shifted runs on macOS, Windows, and Linux. All three platforms get the same feat
 
 Shifted is an Electron app written in TypeScript. See `docs/adr/0003-electron-and-typescript.md`.
 
+The build tools are:
+
+- npm, for packages and scripts.
+- electron-vite, for the development server and the build of the main process, the preload scripts, and the renderer.
+- electron-builder, for installers on all three platforms. Its electron-updater part gives auto-update on macOS, Windows, and Linux (AppImage). The other choice, Electron Forge, has no auto-update for Linux.
+
 ## Window and sidebar
 
 Shifted has one main window. The sidebar is on the left. The content area is on the right. The content area shows one Google app of one account at a time.
@@ -98,7 +104,7 @@ Rule 5 has a known cost. Example: you click a Google Docs link in account B. The
 
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
-- Tooling: package manager, build tool, and the UI library for the sidebar.
+- The UI library for the sidebar.
 - How you sign in to Google inside the app.
 - How the app gets the unread count for each account.
 - The feature list for the first version.
