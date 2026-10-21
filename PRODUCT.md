@@ -135,6 +135,13 @@ These rules apply to the Gmail and Calendar pages of each account, and to their 
 - Every other permission is denied without a question. Examples: location, USB, MIDI, and Bluetooth.
 - On macOS, the operating system also asks once for camera, microphone, and screen recording access. Shifted must declare why it needs them.
 
+## Downloads
+
+- Shifted saves a download, for example a Gmail attachment, straight to the Downloads folder of the operating system.
+- If a file with the same name exists, Shifted adds " (1)", " (2)", and so on to the new name.
+- When the download finishes, Shifted shows a notification. Click it to show the file in Finder, File Explorer, or the file manager.
+- The configuration switch "Ask where to save each file" shows a save dialog for each download. It is off by default.
+
 ## Background loading
 
 A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
