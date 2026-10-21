@@ -282,6 +282,14 @@ Gmail cannot attach a file from a link. So the message has the text form, and no
 
 The main window with no accounts also shows `Import configuration…`, next to `Add account`.
 
+The import merges with the accounts on this computer. It matches the accounts by address:
+
+- If an imported account has the address of an account on this computer, the import updates the values of that account. The account keeps its sign-in.
+- If an imported account has a new address, the import adds it. The new account waits for sign-in.
+- An account on this computer that the import does not have stays. It goes to the end of the sidebar.
+- The sidebar takes the order of the import.
+- The General values of the import replace the General values on this computer.
+
 Before the import changes anything, Shifted shows what will change and asks you to confirm. If Shifted cannot read the file or the text, it changes nothing and tells you why.
 
 After the import, each new account shows a `Sign in` button in place of Gmail. The sign-in window starts with the address of the account already filled in.
