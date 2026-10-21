@@ -40,6 +40,14 @@ _Avoid_: active account, current account
 A separate Shifted window that shows a Gmail pop-out for one account, with the session of that account.
 _Avoid_: popup, new tab, secondary window
 
+**Unread count**:
+The number that Gmail shows next to Inbox for one account.
+_Avoid_: unread total, mail count, badge number
+
+**App badge**:
+The sum of the unread counts of all accounts, shown on the app icon of Shifted.
+_Avoid_: dock badge, taskbar badge, total badge
+
 **Asleep**:
 The state of a Google app that Shifted unloaded to save memory. Shifted loads it again when you open it.
 _Avoid_: hibernated, suspended, discarded, closed

@@ -59,6 +59,16 @@ Shifted has one main window. The sidebar is on the left. The tab bar is at the t
 - The tab bar shows one tab for each Google app of the selected account: Gmail and Calendar. Click a tab to show that Google app in the content area.
 - Each account remembers the Google app that you used last. When you switch back to that account, Shifted shows that Google app.
 
+## Unread badges
+
+- Each account in the sidebar shows its unread count on its avatar. If the count is 0, Shifted shows no badge.
+- The unread count of an account is the number that Gmail shows next to Inbox for that account.
+- The app icon shows the sum of the unread counts of all accounts. On macOS this is the Dock badge. On Windows it is an overlay on the taskbar icon. On Linux it is the launcher badge, on desktops that support one.
+- Shifted gets each unread count from the Gmail Atom feed with the session of the account, about every 60 seconds, and when you switch accounts. See `docs/adr/0005-unread-counts-from-gmail-atom-feed.md`.
+- When the inbox of an account uses category tabs, Gmail counts only the Primary tab. Shifted learns this for each account the first time Gmail loads, and then reads the matching feed.
+- Each account has an override in configuration: "Primary", "Whole inbox", or "Important".
+- If Shifted cannot read the feed of an account, for example because the account is signed out, the badge of that account shows a warning mark instead of a number.
+
 ## Background loading
 
 A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
@@ -136,7 +146,6 @@ These items are not decided yet. The prompts will not be complete until each ite
 
 - The UI library for the sidebar.
 - How the app gets the unread count for each account.
-- Unread badges: what the count means, and how Shifted gets it.
 - Notifications: details.
 - `mailto:` handler: details.
 - Keyboard shortcuts: the exact keys.
