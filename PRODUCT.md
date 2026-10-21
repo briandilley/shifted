@@ -62,6 +62,18 @@ Example: you add `name@company.com`. Google sends you to `company.okta.com` to s
 - If you sign out of Gmail in one account, the other accounts stay signed in.
 - When you remove an account from Shifted, Shifted deletes the session of that account from disk.
 
+## Links
+
+Shifted decides where each link opens. The rules apply to links that you click and to pages that Gmail or Calendar opens on their own.
+
+1. A Gmail link opens in the Gmail Google app of the same account.
+2. A Calendar link opens in the Calendar Google app of the same account. Example: in Gmail, you click an event invitation that goes to `calendar.google.com`. Shifted switches the account to its Calendar Google app and shows the event.
+3. During sign-in, every page stays in Shifted. This includes Google's sign-in pages and the pages of a company identity provider. Sign-in starts when Google's sign-in page loads, and it ends when Gmail or Calendar loads.
+4. A Gmail pop-out opens in a child window that uses the session of the same account. Examples: pop-out compose, the print view, and "Open in new window".
+5. Every other link opens in the default browser of the computer. This includes Google Docs, Drive, Meet, and Contacts.
+
+Rule 5 has a known cost. Example: you click a Google Docs link in account B. The link opens in your default browser, which can be signed in as account A. Shifted accepts this cost, because it is not a web browser.
+
 ## What Shifted is not
 
 - Shifted is not a web browser. It has no address bar and no browser tabs, and you cannot use it to visit websites in general.
@@ -72,7 +84,6 @@ Example: you add `name@company.com`. Google sends you to `company.okta.com` to s
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
 - Tech stack.
-- Which links stay in the app and which links open in the default browser.
 - How you sign in to Google inside the app.
 - How the app gets the unread count for each account.
 - The feature list for the first version.

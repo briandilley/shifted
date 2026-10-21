@@ -31,3 +31,11 @@ _Avoid_: main view, web view, pane
 **Selected account**:
 The account whose Google app the content area shows now.
 _Avoid_: active account, current account
+
+**Child window**:
+A separate Shifted window that shows a Gmail pop-out for one account, with the session of that account.
+_Avoid_: popup, new tab, secondary window
+
+**Default browser**:
+The web browser that the operating system opens for web links, for example Chrome, Safari, Edge, or Firefox.
+_Avoid_: external browser, system browser
