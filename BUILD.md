@@ -13,6 +13,12 @@ The build tools are:
 - React with TypeScript, for the screens of Shifted: the sidebar, the tab bar, the account picker, the top line of the sign-in window, and the configuration. Styles are plain CSS modules, with no component kit. Google's pages are not part of this.
 - electron-builder, for installers on all three platforms. Its electron-updater part gives auto-update on macOS, Windows, and Linux (AppImage). The other choice, Electron Forge, has no auto-update for Linux.
 
+## Icon
+
+- The icon of Shifted is `assets/icon.svg` in the spec repo. `assets/icon.png` is the same icon at 1024 by 1024 pixels.
+- The icon shows three mail cards. Each card is shifted down and to the right of the card behind it. A red dot on the front card stands for unread mail.
+- electron-builder makes the macOS, Windows, and Linux icon files from `build/icon.png` in the code repo.
+
 ## Tests
 
 Each phase must prove that it works in three ways.

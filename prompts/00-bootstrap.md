@@ -27,6 +27,7 @@ At the end of this phase, the code repo has the spec and an `AGENTS.md`. It also
 3. Keep the same names. For example, `<spec>/docs/adr/0001-wrap-gmail-web-interface.md` goes to `docs/spec/docs/adr/0001-wrap-gmail-web-interface.md`.
 4. Do not change the copied files. From now on, they are read-only.
 5. Make an empty `docs/decisions.md` with the title "Decisions made during the build".
+6. Copy `<spec>/assets/icon.png` to `build/icon.png` and to `resources/icon.png`. Copy `<spec>/assets/icon.svg` to `build/icon.svg`.
 
 ### 2. Write the agent files
 
@@ -95,6 +96,7 @@ Make these commands work:
 1. Open one main window with the title "Shifted", about 1200 by 800 points.
 2. Show an empty React page in it, with the text "No accounts yet".
 3. Apply the "Security" section of `docs/spec/BUILD.md` to this window.
+4. Use `resources/icon.png` as the window icon on Windows and Linux. In development mode on macOS, set the Dock icon with `app.dock.setIcon`.
 
 ### 9. The fake Google test server
 
@@ -136,8 +138,9 @@ Make these commands work:
 1. Run `npm install`. It finishes with no error.
 2. Run `npm run dev`. A window called "Shifted" opens and shows "No accounts yet".
 3. Run `npm test` and `npm run test:e2e`. Both pass.
-4. Open `docs/spec/`. It has `PRODUCT.md`, `BUILD.md`, `GLOSSARY.md`, `PRIOR-ART.md`, `docs/adr/`, and `prompts/`.
-5. Open `AGENTS.md`. It has the rules for the build agent and the npm commands.
+4. Open `docs/spec/`. Make sure that it has `PRODUCT.md`, `BUILD.md`, `GLOSSARY.md`, `PRIOR-ART.md`, `docs/adr/`, and `prompts/`.
+5. Make sure that the window or the Dock shows the Shifted icon: three shifted mail cards with a red dot.
+6. Open `AGENTS.md`. Make sure that it has the rules for the build agent and the npm commands.
 
 ## When you finish
 
