@@ -136,6 +136,14 @@ A configuration value, "Background loading", decides which Google apps stay load
 - Unread badges stay current in every value, because they do not need Gmail to be loaded.
 - With "Selected account only", Calendar reminders come only from the selected account.
 
+## Running in the background
+
+- When you close the main window, Shifted hides it and keeps running, so that badges and notifications continue.
+- On macOS, click the Dock icon to show the main window again. Quit is in the app menu (Cmd+Q).
+- On Windows and Linux, Shifted shows a tray icon with the total unread count. Click the tray icon to show the main window. The tray menu has Show, Snooze, and Quit.
+- Shifted remembers the size and position of the main window.
+- "Open at login" is a configuration switch. It is off by default.
+
 ## Accounts in the sidebar
 
 - Each account shows the Google profile photo of the account, inside a ring in the account color. The unread badge sits on the corner of the photo.
