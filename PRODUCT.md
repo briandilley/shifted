@@ -17,6 +17,13 @@ Shifted is a desktop app that keeps several Gmail accounts in one window. Each a
 
 Shifted runs on macOS, Windows, and Linux. All three platforms get the same features.
 
+## Accounts and sessions
+
+- Each account has its own session, with its own cookies and site data. See `docs/adr/0002-isolated-session-per-account.md`.
+- A session persists on disk. After you quit Shifted and open it again, each account is still signed in.
+- If you sign out of Gmail in one account, the other accounts stay signed in.
+- When you remove an account from Shifted, Shifted deletes the session of that account from disk.
+
 ## What Shifted is not
 
 - Shifted is not a web browser. It has no address bar and no browser tabs, and you cannot use it to visit websites in general.
@@ -27,7 +34,6 @@ Shifted runs on macOS, Windows, and Linux. All three platforms get the same feat
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
 - Tech stack.
-- How each account keeps its own sign-in.
 - Which kinds of Google accounts the app supports.
 - Which links stay in the app and which links open in the default browser.
 - How you sign in to Google inside the app.
