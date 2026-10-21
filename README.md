@@ -144,6 +144,7 @@ Each prompt in `prompts/` stands on its own. It has these parts:
 
 - `PRODUCT.md`: what the app does and what it does not do.
 - `BUILD.md`: the stack, the build tools, the icon, and how the agent tests each phase.
+- `DESIGN.md`: the look of Shifted in light and dark mode, with exact colors and sizes.
 - `GLOSSARY.md`: the words that the documents use, with one meaning for each word.
 - `PRIOR-ART.md`: what Shift does, and what Shifted keeps from it and drops.
 - `docs/adr/`: the decisions, with the reason for each one.
