@@ -102,4 +102,3 @@ These items are not decided yet. The prompts will not be complete until each ite
 - How you sign in to Google inside the app.
 - How the app gets the unread count for each account.
 - The feature list for the first version.
-- How the build agent gets the files from this repo.
