@@ -13,6 +13,10 @@ All prompts read the name from this section. To rename the app, change it here.
 
 Shifted is a desktop app that keeps several Gmail accounts in one window. Each account shows Gmail's own web interface. You switch between accounts from a sidebar.
 
+## Platforms
+
+Shifted runs on macOS, Windows, and Linux. All three platforms get the same features.
+
 ## What Shifted is not
 
 - Shifted is not a web browser. It has no address bar and no browser tabs, and you cannot use it to visit websites in general.
@@ -22,7 +26,7 @@ Shifted is a desktop app that keeps several Gmail accounts in one window. Each a
 
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
-- Operating systems and tech stack.
+- Tech stack.
 - How each account keeps its own sign-in.
 - Which kinds of Google accounts the app supports.
 - Which links stay in the app and which links open in the default browser.
