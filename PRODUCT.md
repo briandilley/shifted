@@ -30,6 +30,7 @@ The build tools are:
 
 - npm, for packages and scripts.
 - electron-vite, for the development server and the build of the main process, the preload scripts, and the renderer.
+- React with TypeScript, for the screens of Shifted: the sidebar, the tab bar, the account picker, the top line of the sign-in window, and the configuration. Styles are plain CSS modules, with no component kit. Google's pages are not part of this.
 - electron-builder, for installers on all three platforms. Its electron-updater part gives auto-update on macOS, Windows, and Linux (AppImage). The other choice, Electron Forge, has no auto-update for Linux.
 
 ## Version 1 features
@@ -196,4 +197,3 @@ Rule 5 has a known cost. Example: you click a Google Docs link in account B. The
 
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
-- The UI library for the sidebar.
