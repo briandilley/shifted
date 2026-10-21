@@ -17,104 +17,93 @@ Status: the prompts for version 1 are complete. Nobody has built the full app fr
 - A coding agent that can read files and run commands in a folder. Examples: Claude Code (`claude`), Codex CLI (`codex`), or Cursor in agent mode.
 - At least one Google account to test with.
 
-### Step 1: Clone this repo
+### Build the app in three steps
 
-This repo is the spec repo. Clone it to a folder of your choice. The examples use `~/src`.
+1. Make an empty folder for the app, and start your agent in it:
 
-```sh
-mkdir -p ~/src
-git clone https://github.com/briandilley/shifted.git ~/src/shifted-spec
-```
+   ```sh
+   mkdir -p ~/src/shifted-app
+   cd ~/src/shifted-app
+   claude        # or: codex
+   ```
 
-Get the full path of the clone. You need it in step 3, because some agents do not expand `~`.
+2. Paste this message into the agent:
 
-```sh
-echo ~/src/shifted-spec
-```
+   ```text
+   Clone https://github.com/briandilley/shifted.git into a temporary folder
+   outside this one. Then read prompts/build-all.md in that clone and do
+   what it says.
+   ```
 
-### Step 2: Make the code repo
+3. When the agent says that the build is complete, start the app and do the manual tests:
 
-The code of the app goes in a second, empty folder. This folder is the code repo.
+   ```sh
+   npm run dev
+   ```
 
-```sh
-mkdir -p ~/src/shifted-app
-cd ~/src/shifted-app
-git init
-```
+   The list of manual tests is in `docs/manual-tests.md` in the app folder. It starts with the sign-in of your Google accounts.
 
-### Step 3: Run prompt 00
+The agent builds the 10 phases one after the other, with no stops for you. A full build takes hours, not minutes. The agent records its progress in `docs/build-progress.md`. It stops early in three cases: a tool is missing, a phase still fails after 3 repair attempts, or the spec has a conflict.
 
-Start your agent in the code repo:
+A full build runs many commands. If your agent asks before each command, the build waits for you. In Claude Code, answer the first question for each command with the option that does not ask again. Other agents have a similar mode. Use it only in the new app folder.
 
-```sh
-cd ~/src/shifted-app
-claude        # or: codex
-```
+### If the build stops
 
-Paste this message into the agent. Put your full path in place of `/Users/you/src/shifted-spec`.
+Start your agent again in the same folder and paste this message:
 
 ```text
-Read /Users/you/src/shifted-spec/prompts/00-bootstrap.md and do what it says.
-The spec repo is at /Users/you/src/shifted-spec.
+Read docs/spec/prompts/build-all.md and continue the build.
 ```
 
-Some agents cannot read files outside their folder. For those agents, copy the prompt to the clipboard and paste it, followed by the line "The spec repo is at ...".
-
-```sh
-cat ~/src/shifted-spec/prompts/00-bootstrap.md | pbcopy                     # macOS
-cat ~/src/shifted-spec/prompts/00-bootstrap.md | xclip -selection clipboard  # Linux
-Get-Content ~\src\shifted-spec\prompts\00-bootstrap.md | Set-Clipboard      # Windows PowerShell
-```
-
-Prompt 00 copies the spec into `docs/spec/` in the code repo. It also writes `AGENTS.md` there. From now on, every prompt is in the code repo, so the later messages are short.
-
-When the agent finishes, do the manual tests at the end of the prompt:
-
-```sh
-npm install
-npm run dev
-npm test
-npm run test:e2e
-```
-
-### Step 4: Run prompts 01 to 09
-
-Start a fresh agent session for each prompt. In Claude Code, type `/clear`. In Codex or Cursor, start a new session or chat.
-
-Paste this message. Change the file name for each prompt, in number order.
-
-```text
-Read docs/spec/prompts/01-one-account.md and do what it says.
-```
-
-After the agent finishes, do the manual tests at the end of that prompt. If a manual test fails, tell the agent which one, and what you saw:
-
-```text
-Manual test 3 of prompt 01 failed. After the sign-in, the sign-in window
-stayed open and Gmail did not show in the main window. Fix it, then run
-npm test and npm run test:e2e again.
-```
-
-Each phase ends with one commit, for example `Phase 01: one account`. Run `git log --oneline` to see the phases that are done.
-
-### Step 5: The optional prompts
-
-- Prompt 10 makes signed installers and auto-update. It needs an Apple Developer account for macOS and a code-signing certificate for Windows.
-- Prompt 11 tries Touch ID passkeys on macOS. It needs the signed build of prompt 10.
+The agent reads `docs/build-progress.md` and continues from the first phase that is not done. If the folder has no `docs/spec/` yet, the build stopped in phase 00. In that case, paste the message of step 2 again.
 
 ### Sign in to Google
 
 On macOS and Linux, passkeys do not work in Shifted. If Google asks for a passkey, click "Try another way". Then use your password and 2-Step Verification. You sign in to each account only once. Shifted keeps the sign-in after a restart.
 
-### If the spec changes later
+### The optional prompts
 
-The code repo has a copy of the spec from the time of prompt 00. To get a newer spec, pull it first:
+- Prompt 10 makes signed installers and auto-update. It needs an Apple Developer account for macOS and a code-signing certificate for Windows.
+- Prompt 11 tries Touch ID passkeys on macOS. It needs the signed build of prompt 10.
 
-```sh
-git -C ~/src/shifted-spec pull
+To run one of them, paste a message like this into your agent in the app folder:
+
+```text
+Read docs/spec/prompts/10-installers-and-updates.md and do what it says.
 ```
 
-Then give the agent this message:
+## Run the prompts one at a time
+
+With this way, you watch and test each phase before the next one starts.
+
+1. Clone this repo, and make an empty app folder:
+
+   ```sh
+   git clone https://github.com/briandilley/shifted.git ~/src/shifted-spec
+   mkdir -p ~/src/shifted-app
+   cd ~/src/shifted-app
+   ```
+
+2. Start your agent in the app folder. Paste this message, with the full path of your clone. Some agents do not expand `~`, so run `echo ~/src/shifted-spec` to get the full path.
+
+   ```text
+   Read /Users/you/src/shifted-spec/prompts/00-bootstrap.md and do what it says.
+   The spec repo is at /Users/you/src/shifted-spec.
+   ```
+
+3. For each next prompt, start a fresh agent session. In Claude Code, type `/clear`. Paste this message, with the file name of the next prompt:
+
+   ```text
+   Read docs/spec/prompts/01-one-account.md and do what it says.
+   ```
+
+4. After each prompt, do the manual tests at the end of that prompt. If a test fails, tell the agent which test failed and what you saw. Then let it fix the phase before you go on.
+
+Each phase ends with one commit, for example `Phase 01: one account`. Run `git log --oneline` to see the phases that are done.
+
+### If the spec changes later
+
+The app folder has a copy of the spec from the time of prompt 00. To get a newer spec, pull your clone of this repo. Then give the agent this message:
 
 ```text
 The spec repo at /Users/you/src/shifted-spec changed. Compare it with
@@ -126,6 +115,7 @@ that the new spec needs. Do not change the code yet.
 
 | Prompt | Phase |
 | --- | --- |
+| `prompts/build-all.md` | The master prompt. It runs the prompts 00 to 09 in order, each in a fresh context, and tracks the progress. |
 | `prompts/00-bootstrap.md` | The code repo, the spec copy, `AGENTS.md`, Electron with React and TypeScript, Vitest, Playwright, and the fake Google test server. |
 | `prompts/01-one-account.md` | One account: its session, the sign-in window, Gmail, the signed-out state, and sign-in that survives a restart. |
 | `prompts/02-many-accounts.md` | The sidebar, the profile photo with a color ring, reordering, the context menu, the tab bar, and the configuration window. |

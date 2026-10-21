@@ -2,7 +2,7 @@
 
 You are a coding agent. You will build Shifted, a desktop app that keeps several Gmail accounts in one window. This prompt is the first of a series. It sets up the code repo. It does not build any feature.
 
-The person who gave you this prompt also gave you the path of the spec repo. The spec repo is a clone of `https://github.com/briandilley/shifted`. In this prompt, `<spec>` means that path. If you do not have the path, ask the person for it before you do anything else.
+With this prompt, you also got the path of the spec repo, from the person or from `build-all.md`. The spec repo is a clone of `https://github.com/briandilley/shifted`. In this prompt, `<spec>` means that path. If you do not have the path, clone `https://github.com/briandilley/shifted.git` into a new temporary folder outside the current folder, and use that folder.
 
 The current folder is the code repo. It is empty, or it has only a `.git` folder.
 
