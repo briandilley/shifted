@@ -40,6 +40,10 @@ _Avoid_: active account, current account
 A separate Shifted window that shows a Gmail pop-out for one account, with the session of that account.
 _Avoid_: popup, new tab, secondary window
 
+**Sign-in window**:
+A small separate Shifted window that shows Google's sign-in page for one account, with the session of that account.
+_Avoid_: login window, auth popup, sign-in dialog
+
 **Default browser**:
 The web browser that the operating system opens for web links, for example Chrome, Safari, Edge, or Firefox.
 _Avoid_: external browser, system browser

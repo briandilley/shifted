@@ -62,7 +62,11 @@ Example: you add `name@company.com`. Google sends you to `company.okta.com` to s
 
 ## Sign-in
 
-- You sign in on Google's own sign-in page, inside Shifted, in the session of the account.
+- You sign in on Google's own sign-in page, in a sign-in window. The sign-in window is a small separate Shifted window, about 480 by 720 points, that uses the session of the account.
+- The top of the sign-in window shows one line of help from Shifted. The rest of the window shows Google's sign-in page.
+- While the sign-in window is open, the content area of the account says that sign-in is in progress.
+- When Gmail loads in the sign-in window, Shifted closes the sign-in window and shows Gmail of that account in the main window.
+- If Google signs an account out, the content area of that account says that the account is signed out and shows a "Sign in again" button. The button opens the sign-in window for that account. Shifted never shows Google's sign-in page in the content area.
 - Shifted never pretends to be another browser. See `docs/adr/0004-honest-user-agent-for-sign-in.md`.
 - Passkeys do not work in Shifted. When Google asks for a passkey, you click "Try another way" and use your password and 2-Step Verification. The sign-in screen of Shifted tells you this before you start.
 
@@ -85,7 +89,7 @@ Shifted decides where each link opens. The rules apply to links that you click a
 
 1. A Gmail link opens in the Gmail Google app of the same account.
 2. A Calendar link opens in the Calendar Google app of the same account. Example: in Gmail, you click an event invitation that goes to `calendar.google.com`. Shifted switches to the Calendar tab of the same account and shows the event. It does not open a new window.
-3. During sign-in, every page stays in Shifted. This includes Google's sign-in pages and the pages of a company identity provider. Sign-in starts when Google's sign-in page loads, and it ends when Gmail or Calendar loads.
+3. In the sign-in window, every page stays in the sign-in window. This includes Google's sign-in pages and the pages of a company identity provider.
 4. A Gmail pop-out opens in a child window that uses the session of the same account. Examples: pop-out compose, the print view, and "Open in new window".
 5. Every other link opens in the default browser of the computer. This includes Google Docs, Drive, Meet, and Contacts.
 
@@ -108,6 +112,5 @@ Rule 5 has a known cost. Example: you click a Google Docs link in account B. The
 These items are not decided yet. The prompts will not be complete until each item has an answer.
 
 - The UI library for the sidebar.
-- Where the sign-in page shows: in the content area, or in a separate sign-in window.
 - How the app gets the unread count for each account.
 - The feature list for the first version.
