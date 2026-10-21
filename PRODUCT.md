@@ -24,6 +24,27 @@ Shifted is a desktop app that keeps several Gmail accounts in one window. Each a
 
 Shifted runs on macOS, Windows, and Linux. All three platforms get the same features.
 
+## Window and sidebar
+
+Shifted has one main window. The sidebar is on the left. The content area is on the right. The content area shows one Google app of one account at a time.
+
+```
++----+---------------------------+
+| [A]|                           |
+|  M |                           |
+|  C |     Gmail of account A    |
+| [B]|                           |
+| [C]|                           |
+|    |                           |
+| [+]|                           |
++----+---------------------------+
+```
+
+- The sidebar shows one avatar for each account, in a vertical list. The add-account button is below the list.
+- Under the avatar of the selected account, the sidebar shows two small icons: Gmail (M in the drawing) and Calendar (C in the drawing). Click an icon to show that Google app in the content area.
+- Each account remembers the Google app that you used last. When you switch back to that account, Shifted shows that Google app.
+- There is no bar above the content area. Gmail and Calendar use the full height of the window.
+
 ## Supported accounts
 
 Shifted supports every Google account that has Gmail:
