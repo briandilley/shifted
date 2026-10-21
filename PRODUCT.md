@@ -122,6 +122,19 @@ Cmd is the Command key on macOS. On Windows and Linux, use Ctrl in place of Cmd.
 - The shortcuts are fixed in version 1. You cannot change them.
 - No shortcut of Shifted uses a key that Gmail or Calendar already uses. Example: Cmd+Shift+C adds Cc recipients in Gmail, so Shifted does not use it.
 
+## Page permissions
+
+These rules apply to the Gmail and Calendar pages of each account, and to their child windows.
+
+- Notifications: always allowed. The notification switches of Shifted decide what shows.
+- Camera and microphone: Shifted asks you the first time a page of an account asks for them, for example when you join a Google Chat huddle in Gmail. Shifted remembers your answer for that account.
+- Screen sharing: Shifted asks you the first time a page of an account asks for it. Then the screen picker of the operating system lets you choose what to share.
+- Clipboard read: Shifted asks you the first time a page of an account asks for it. Shifted remembers your answer for that account.
+- Shifted never asks for a permission at startup. It asks only when a page needs it.
+- The configuration can reset the remembered answers of an account.
+- Every other permission is denied without a question. Examples: location, USB, MIDI, and Bluetooth.
+- On macOS, the operating system also asks once for camera, microphone, and screen recording access. Shifted must declare why it needs them.
+
 ## Background loading
 
 A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
