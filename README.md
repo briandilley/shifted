@@ -27,6 +27,23 @@ Each prompt in `prompts/` stands on its own. It has these parts:
 5. Tests: the unit tests and end-to-end tests that the agent adds in this phase.
 6. Hand checks: the steps that you do by hand to make sure that the phase works.
 
+## The prompts
+
+| Prompt | Phase |
+| --- | --- |
+| `prompts/00-bootstrap.md` | The code repo, the spec copy, `AGENTS.md`, Electron with React and TypeScript, Vitest, Playwright, and the fake Google test server. |
+| `prompts/01-one-account.md` | One account: its session, the sign-in window, Gmail, the signed-out state, and sign-in that survives a restart. |
+| `prompts/02-many-accounts.md` | The sidebar, the profile photo with a color ring, reordering, the context menu, the tab bar, and the configuration window. |
+| `prompts/03-links.md` | The link rules, child windows, Calendar links, the default browser, page permissions, and downloads. |
+| `prompts/04-unread-badges.md` | The Atom feed, the choice of feed for each account, the unread badges, and the app badge. |
+| `prompts/05-notifications.md` | New-mail notifications from the feed, Calendar and Chat notifications, the switches, snooze, and quiet hours. |
+| `prompts/06-mailto.md` | The account picker, the new message, and the default email app. |
+| `prompts/07-shortcuts-and-background.md` | Keyboard shortcuts, background loading, hide on close, the tray icon, and open at login. |
+| `prompts/08-hardening.md` | Security, crash and offline states, accessibility, and hand checks on all three platforms. |
+| `prompts/09-release-check.md` | A full pass of the hand checks, and the README of the code repo. |
+| `prompts/10-installers-and-updates.md` | Optional: signed installers and auto-update. |
+| `prompts/11-touch-id-passkeys.md` | Optional: Touch ID passkeys on macOS. It starts with a prototype. |
+
 ## How to use the prompts
 
 1. Read `PRODUCT.md` to make sure that Shifted is the app you want.
