@@ -28,6 +28,15 @@ Shifted is an Electron app written in TypeScript. See `docs/adr/0003-electron-an
 
 The build tools and the test approach are in `BUILD.md`.
 
+## Version 1 features
+
+Version 1 has these features, in addition to the sidebar, the tab bar, and adding and removing accounts. Each feature has its own section below when its details are decided.
+
+- Unread badges: an unread count on each account in the sidebar, and the total on the app icon.
+- Notifications: desktop notifications for new mail and for Calendar reminders, in every account.
+- `mailto:` handler: Shifted can be the default email app of the computer.
+- Keyboard shortcuts: jump to an account, move to the previous or next account, and switch between the Gmail and Calendar tabs.
+
 ## Window and sidebar
 
 Shifted has one main window. The sidebar is on the left. The tab bar is at the top of the right side. The content area is below the tab bar. The content area shows one Google app of one account at a time.
