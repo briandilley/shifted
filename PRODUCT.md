@@ -84,6 +84,14 @@ Calendar and Chat:
 - Calendar reminders and Google Chat messages come from the web notifications of the Calendar and Gmail pages. Shifted allows these notifications and shows them as desktop notifications.
 - When you click one of these notifications, Shifted comes to the front and selects the account and the tab that sent it.
 
+Controls:
+
+- Each account has three switches: new mail, Calendar reminders, and Chat messages. All three are on for a new account.
+- Snooze stops all notifications of all accounts. You choose 30 minutes, 1 hour, until 8:00 tomorrow, or until you turn snooze off. Badges keep updating during snooze.
+- Each account can have quiet hours: a daily time range and a set of weekdays with no notifications from that account. Example: a work account is quiet outside 9:00 to 18:00, Monday to Friday.
+- Shifted uses the notification system of the operating system. So macOS Focus, Windows Do Not Disturb, and the Do Not Disturb mode of a Linux desktop also hide notifications from Shifted.
+- A notification that snooze or quiet hours stopped does not show later.
+
 ## Background loading
 
 A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
@@ -161,6 +169,5 @@ These items are not decided yet. The prompts will not be complete until each ite
 
 - The UI library for the sidebar.
 - How the app gets the unread count for each account.
-- Notifications: per-account switches, snooze, and quiet hours.
 - `mailto:` handler: details.
 - Keyboard shortcuts: the exact keys.
