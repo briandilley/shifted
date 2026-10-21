@@ -74,6 +74,13 @@ Shifted decides where each link opens. The rules apply to links that you click a
 
 Rule 5 has a known cost. Example: you click a Google Docs link in account B. The link opens in your default browser, which can be signed in as account A. Shifted accepts this cost, because it is not a web browser.
 
+## Privacy and network
+
+- Shifted has no server of its own.
+- Shifted has no sign-up, no license check, no telemetry, no crash reporting, and no settings sync.
+- All data of Shifted stays on the computer: the account list, the preferences, and the sessions.
+- The only network traffic is the traffic of Google's own pages, the pages of a company identity provider during sign-in, and the update check if the build has one.
+
 ## What Shifted is not
 
 - Shifted is not a web browser. It has no address bar and no browser tabs, and you cannot use it to visit websites in general.
