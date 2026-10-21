@@ -101,6 +101,25 @@ Controls:
 - After you pick an account, Shifted selects that account in the main window, shows its Gmail tab, and opens a new message. The new message has the address, subject, and body from the link. If Gmail of that account is asleep, Shifted loads it first.
 - A `mailto:` link inside Gmail or Calendar of an account opens a new message in the Gmail of the same account, without the account picker.
 
+## Keyboard shortcuts
+
+Cmd is the Command key on macOS. On Windows and Linux, use Ctrl in place of Cmd. Ctrl+Tab and Ctrl+Shift+Tab use Ctrl on all three platforms.
+
+| Action | Keys |
+| --- | --- |
+| Jump to account 1 to 9 | Cmd+1 to Cmd+9 |
+| Next account | Ctrl+Tab |
+| Previous account | Ctrl+Shift+Tab |
+| Gmail tab | Cmd+Shift+M |
+| Calendar tab | Cmd+Shift+C (conflict with Gmail, see open questions) |
+| Reload the Google app | Cmd+R |
+| Configuration | Cmd+, |
+| Add account | Cmd+Shift+N |
+| Snooze notifications | Cmd+Shift+S |
+
+- The order of the accounts in the sidebar decides the numbers 1 to 9.
+- The shortcuts are fixed in version 1. You cannot change them.
+
 ## Background loading
 
 A configuration value, "Background loading", decides which Google apps stay loaded when you do not look at them. A loaded Google app uses roughly 200 to 500 MB of memory.
@@ -178,4 +197,4 @@ These items are not decided yet. The prompts will not be complete until each ite
 
 - The UI library for the sidebar.
 - How the app gets the unread count for each account.
-- Keyboard shortcuts: the exact keys.
+- Keyboard shortcuts: Cmd+Shift+C is also the Gmail shortcut that adds Cc recipients. Pick another key for the Calendar tab.
