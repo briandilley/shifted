@@ -7,16 +7,18 @@ The first version of prompt 01 stopped every navigation of the Gmail view to `ac
 ## Decision
 
 1. A main-frame HTTP redirect that only passes through `accounts.google.com` goes on.
-2. Before a Google app shows a page of `accounts.google.com`, Shifted hides the Google view and reads the feed of the account.
+2. Before a Google app shows a page of `accounts.google.com`, Shifted hides the Google view. When the view is back on a Gmail or Calendar page, Shifted shows it again.
+3. Shifted reads the feed of the account only if the view stops on a page of `accounts.google.com` and is still there 3 seconds later.
    - If the feed says that the account is signed out, Shifted stops the page and shows the signed-out panel.
-   - If the feed works, the visit is a cookie refresh. Google finishes it while the view stays hidden. When the view is back on a Gmail or Calendar page, Shifted shows it again.
+   - If the feed works, the visit is a cookie refresh. Google finishes it while the view stays hidden.
    - If the view is still on `accounts.google.com` after 15 seconds, Shifted loads the Google app again once from its start URL. If it comes back to `accounts.google.com`, Shifted shows the signed-out panel. So Shifted never loops.
    - If the feed fails for another reason, for example offline, the same 15-second limit applies.
-3. A navigation can cause the signed-out panel. In that case, Shifted writes the host and the path of that page to the log of the main process. It never writes the query string or a cookie.
+4. A navigation can cause the signed-out panel. In that case, Shifted writes the host and the path of that page to the log of the main process. It never writes the query string or a cookie.
 
 ## Consequences
 
-- A real sign-out still shows the panel within a few seconds: the time of one feed request.
+- The feed of a signed-in account can answer HTTP 401 while Gmail passes through `accounts.google.com` to get its cookies again, for example after a restart. A second test on 2026-10-21 showed this. So Shifted does not read the feed during the redirects, and a feed at the end of redirects through `accounts.google.com` counts as signed in.
+- A real sign-out still shows the panel within a few seconds: 3 seconds and the time of one feed request.
 - After a real sign-in, the content area can show its loading state for a moment while Google sets its cookies.
 - The feed is now the source of truth for "signed in" in two places: the badges of prompt 04 and the signed-out panel. See `docs/adr/0005-unread-counts-from-gmail-atom-feed.md`.
 - If Google removes the Atom feed, this check needs another source.

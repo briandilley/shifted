@@ -61,13 +61,14 @@ A signed-in Gmail also passes through `accounts.google.com`, for example to set 
 
 1. Let a main-frame HTTP redirect that only passes through `accounts.google.com` go on.
 2. Before the Gmail view shows a page of `accounts.google.com`, hide the Gmail view. Never show Google's sign-in page in the main window.
-3. Read the Atom feed of the whole inbox with the session of the account.
-   - If the feed answers HTTP 401 or 403, or redirects to `accounts.google.com`, stop the page and show the signed-out panel.
-   - If the feed works, wait while the view stays hidden. When the view is back on a Gmail page, show it again.
-4. If the view is still on `accounts.google.com` after 15 seconds, load Gmail again once from its start URL. If it comes back to `accounts.google.com`, show the signed-out panel. Never load it again in a loop.
-5. The signed-out panel is a React panel: "This account is signed out." and a "Sign in again" button.
-6. The button opens the sign-in window for the same account and the same session.
-7. When a navigation causes the signed-out panel, write the host and the path of the page to the log of the main process. Never write the query string or a cookie.
+3. When the view is back on a Gmail page, show it again. Do not read the feed while the view only passes through `accounts.google.com`. During those redirects, the feed of a signed-in account can answer HTTP 401, because Gmail does not have its cookies yet.
+4. If the view stops on a page of `accounts.google.com` and is still there 3 seconds later, read the Atom feed of the whole inbox with the session of the account.
+   - If the feed answers HTTP 401 or 403, or its redirects pass through `accounts.google.com` and do not end with a feed, stop the page and show the signed-out panel.
+   - If the feed works, wait while the view stays hidden.
+5. If the view is still on `accounts.google.com` after 15 seconds, load Gmail again once from its start URL. If it comes back to `accounts.google.com`, show the signed-out panel. Never load it again in a loop.
+6. The signed-out panel is a React panel: "This account is signed out." and a "Sign in again" button.
+7. The button opens the sign-in window for the same account and the same session.
+8. When a navigation causes the signed-out panel, write the host and the path of the page to the log of the main process. Never write the query string or a cookie.
 
 ### 6. Restart
 
@@ -105,7 +106,8 @@ Add to `test/fake-google/`:
 - End-to-end: restart Shifted with the same user data folder. The account shows the fake Gmail with no sign-in.
 - End-to-end: clear the fake cookie. The main window shows "This account is signed out." "Sign in again" opens the sign-in window.
 - End-to-end: turn on each form of the cookie hop for a signed-in account. The main window keeps the fake Gmail. It never shows the signed-out panel or the fake sign-in page.
-- Unit: the sign-out decision of section 5 gives "signed out" only when the feed says signed out, or when the view stays on the sign-in host after the one new load.
+- Unit: the sign-out decision of section 5 gives "signed out" only when the view stops on the sign-in host and the feed says signed out, or when the view stays on the sign-in host after the one new load. It reads no feed while the view only passes through the sign-in host.
+- Unit: a feed answer at the end of redirects through the sign-in host counts as signed in.
 - End-to-end: remove the account. Its partition folder no longer exists. On Windows, the folder no longer exists after Shifted starts again.
 
 ## Manual tests
