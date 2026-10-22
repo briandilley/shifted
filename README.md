@@ -119,7 +119,7 @@ that the new spec needs. Do not change the code yet.
 | `prompts/00-bootstrap.md` | The code repo, the spec copy, `AGENTS.md`, Electron with React and TypeScript, Vitest, Playwright, and the fake Google test server. |
 | `prompts/01-one-account.md` | One account: its session, the sign-in window, Gmail, the signed-out state, and sign-in that survives a restart. |
 | `prompts/02-many-accounts.md` | The sidebar, the profile photo with a color ring, reordering, the context menu, the tab bar, and the configuration window. |
-| `prompts/03-links.md` | The link rules, child windows, Calendar links, the default browser, page permissions, and downloads. |
+| `prompts/03-links.md` | The link rules, child windows, Calendar links, the default browser, the context menu of a page, page permissions, and downloads. |
 | `prompts/04-unread-badges.md` | The Atom feed, the choice of feed for each account, the unread badges, and the app badge. |
 | `prompts/05-notifications.md` | New-mail notifications from the feed, Calendar and Chat notifications, the switches, snooze, and quiet hours. |
 | `prompts/06-mailto.md` | The account picker, the new message, and the default email app. |
