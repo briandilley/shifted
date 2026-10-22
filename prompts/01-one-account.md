@@ -79,6 +79,7 @@ A signed-in Gmail also passes through `accounts.google.com`, for example to set 
 1. Add a temporary "Remove account" button. Prompt 02 moves it into the context menu.
 2. Ask the person to confirm.
 3. Close the views of the account. Call `clearStorageData()` on its session. Delete the partition folder of the session from disk. Remove the account from the configuration.
+4. On Windows, Chromium keeps files of the partition folder open while Shifted runs, and Windows cannot delete an open file. Electron has no call that closes a session. If the delete fails on Windows, remove the account from the configuration at once. Write the folder to a list in the user data folder. When Shifted starts, delete each folder on that list before any session opens it.
 
 ### 8. The fake Google test server
 
@@ -105,7 +106,7 @@ Add to `test/fake-google/`:
 - End-to-end: clear the fake cookie. The main window shows "This account is signed out." "Sign in again" opens the sign-in window.
 - End-to-end: turn on each form of the cookie hop for a signed-in account. The main window keeps the fake Gmail. It never shows the signed-out panel or the fake sign-in page.
 - Unit: the sign-out decision of section 5 gives "signed out" only when the feed says signed out, or when the view stays on the sign-in host after the one new load.
-- End-to-end: remove the account. Its partition folder no longer exists.
+- End-to-end: remove the account. Its partition folder no longer exists. On Windows, the folder no longer exists after Shifted starts again.
 
 ## Manual tests
 
