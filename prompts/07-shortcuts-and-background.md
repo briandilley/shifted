@@ -9,8 +9,9 @@ At the end of this phase, the keyboard shortcuts work. Shifted keeps running aft
 ## Read first
 
 1. `AGENTS.md`
-2. `docs/spec/PRODUCT.md`, sections "Keyboard shortcuts", "Background loading", "Running in the background", and "Configuration".
+2. `docs/spec/PRODUCT.md`, sections "Keyboard shortcuts", "Find in page", "Background loading", "Running in the background", and "Configuration".
 3. `docs/spec/GLOSSARY.md`
+4. `docs/spec/DESIGN.md`, section "Find bar".
 
 ## Scope
 
@@ -20,7 +21,7 @@ At the end of this phase, the keyboard shortcuts work. Shifted keeps running aft
 2. Use `CommandOrControl` for Cmd on macOS and Ctrl on Windows and Linux.
 3. Add each shortcut to the app menu, so that the menu shows the keys.
 4. A web view gets keys before the app menu does. Also catch the shortcuts in the `before-input-event` handler of every web view and every child window. When a key matches, call `event.preventDefault()` and run the action.
-5. Do not catch any key that is not in the table. Gmail and Calendar keep all their own keys.
+5. Outside the Find bar, catch Escape only while Find is open. Keep every other unlisted key available to Gmail and Calendar.
 
 ### 2. The actions
 
@@ -31,6 +32,17 @@ At the end of this phase, the keyboard shortcuts work. Shifted keeps running aft
 5. Cmd+, opens the configuration window.
 6. Cmd+Shift+N starts the add-account flow.
 7. Cmd+Shift+S opens the snooze choices from prompt 05.
+8. Cmd+F opens Find for the visible Google app or the focused child window.
+
+### Find in page
+
+1. Implement "Find in page" from `PRODUCT.md` and the Find bar from `DESIGN.md`.
+2. Use `webContents.findInPage`, `found-in-page`, and `stopFindInPage` for the Google page.
+3. Keep the bar in a separate, sandboxed Shifted view. Use the existing preload for Shifted screens.
+4. Accept search and close messages only from the main frame of that bar. Make sure that the text and direction are valid.
+5. Track the latest search request ID. Ignore results from earlier requests.
+6. Close the bar when its page changes or disappears. Remove its event listeners and close its web contents.
+7. Keep search text in memory. Put the English labels in `src/renderer/strings.ts`.
 
 ### 3. Background loading
 
@@ -75,6 +87,12 @@ At the end of this phase, the keyboard shortcuts work. Shifted keeps running aft
 - Unit: the sleep rules give the right set of loaded apps for each value of "Background loading".
 - End-to-end: Cmd+2 (Ctrl+2) selects account 2. Ctrl+Tab selects account 3.
 - End-to-end: Cmd+Shift+2 selects the Calendar tab.
+- End-to-end: restore an account at startup and use Find inside its Google page.
+- End-to-end: send Cmd+F or Ctrl+F through `webContents.sendInputEvent` in the Google page and the frame view.
+- End-to-end: search an email with repeated text. Test case sensitivity, counts, next, previous, wraparound, and no matches.
+- End-to-end: test an empty query, repeated Cmd+F, Escape, Close, and focus after closure.
+- End-to-end: test Calendar and a child window. Test account changes, tab changes, navigation, and window closure.
+- End-to-end: test the Edit menu and a window with no Google page. Reject search messages from other screens.
 - End-to-end: with "Selected account only" and a short test timer, leave account 2. After the timer, its views are closed. A change to the fake feed still changes its badge.
 - End-to-end: close the main window. The app keeps running and the fake feed still records notifications.
 
@@ -86,6 +104,8 @@ At the end of this phase, the keyboard shortcuts work. Shifted keeps running aft
 4. Close the main window. Send yourself an email. Make sure that the notification still shows.
 5. On Windows or Linux, make sure that the tray icon shows the total and that its menu works.
 6. Turn on "Open at login". Log out and log in. Make sure that Shifted runs with no window.
+7. Open a real email with repeated text. Use Find and make sure that its highlights, count, and match navigation work.
+8. Use Find in Calendar and a child window. Make sure that each search stays in its page.
 
 ## When you finish
 

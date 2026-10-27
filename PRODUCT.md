@@ -189,6 +189,7 @@ Cmd is the Command key on macOS. On Windows and Linux, use Ctrl in place of Cmd.
 | Gmail tab | Cmd+Shift+1 |
 | Calendar tab | Cmd+Shift+2 |
 | Reload the Google app | Cmd+R |
+| Find text in the page | Cmd+F |
 | Configuration | Cmd+, |
 | Add account | Cmd+Shift+N |
 | Snooze notifications | Cmd+Shift+S |
@@ -196,6 +197,23 @@ Cmd is the Command key on macOS. On Windows and Linux, use Ctrl in place of Cmd.
 - The order of the accounts in the sidebar decides the numbers 1 to 9.
 - The shortcuts are fixed in version 1. You cannot change them.
 - No shortcut of Shifted uses a key that Gmail or Calendar already uses. Example: Cmd+Shift+C adds Cc recipients in Gmail, so Shifted does not use it.
+
+## Find in page
+
+Cmd+F opens a Find bar for the visible Google app. On Windows and Linux, Ctrl+F opens it.
+The Edit menu also has "Find in page…". A child window searches its own page.
+Find searches text that the page loaded, including an open email. It does not search other messages or accounts.
+
+- The bar has a text field, the current match number, the total count, and Previous, Next, and Close buttons.
+- Typing searches without case sensitivity. Shifted highlights matches and scrolls to the current match.
+- Enter selects the next match. Shift+Enter selects the previous match. Both wrap around.
+- An unsuccessful search shows "No matches". An empty field clears the highlights and count.
+- Cmd+F in an open bar focuses the field and selects its text.
+- Escape in the bar or its Google page closes the bar and clears the highlights. Close does the same.
+- Closing the bar returns focus to its Google page.
+- An account change, a tab change, navigation, sign-out, a page crash, or closure of its window closes the bar.
+- Find does nothing when the window has no visible Google app or child page. The sign-in window has no Find bar.
+- Search text stays in memory. Shifted never saves it or sends it to a server.
 
 ## Page permissions
 

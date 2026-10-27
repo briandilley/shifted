@@ -119,6 +119,20 @@ All sizes are in points.
 
 ## The other windows
 
+### Find bar
+
+The Find bar sits above the top-right corner of the Google page, inside its window.
+It uses a separate Shifted view above the Google view, so the page cannot cover it.
+The bar is 440 points wide and 56 points high, with a radius of 8.
+
+Its width shrinks to fit a narrower child window. It uses `--surface`, `--separator`, and the standard text and field colors.
+The field takes the remaining width beside the count and three buttons. Each button is 28 points square.
+
+The buttons use the Lucide ChevronUp, ChevronDown, and X icons. Each control has an accessible name and the standard focus outline.
+The bar follows the light or dark mode of the operating system.
+
+### Window layouts
+
 - Configuration window: the list of pages is on the backdrop. The open page is a card in `--surface`, with a radius of 12 and a margin of 10. The selected list item has the `--surface` fill. The backdrop is `--base` on the General and Notifications pages. On the page of an account, it has the tint of that account.
 - Account picker: one card in `--surface` on the backdrop. The fill of the selected row is 14% of the account color over `--surface`. Its inside border is 1.5 points of the account color at 55%.
 - Sign-in window: the line of help is on the backdrop at the top, in `--text-secondary`, 12 px. Google's page is below it, in a web view with a radius of 12 and a margin of 10.
